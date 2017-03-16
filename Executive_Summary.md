@@ -8,7 +8,7 @@ Go is a statically typed, compiled language. Go has many built in features such 
 
 Testing Framework
 =
-We have selected Go's built in testing language. The testing framework is a package called "Testing" and is part of Go's core library. This means that the testing framework is should be optimised and up-to-date with the GO lanagauge. Third party testing languages are provided within the community as alternatives. The alteratives do not have the official documentation or the large support base that the core testing package has. All things considered, the default framework allows for faster testing development.
+We have selected Go's built in testing language. The testing framework is a package called "Testing" and is part of Go's core library. This means that the testing framework is should be optimised and up-to-date with the Go lanagauge. Third party testing languages are provided within the community as alternatives. The alteratives do not have the official documentation or the large support base that the core testing package has. All things considered, the default framework allows for faster testing development.
 
 The framework has a useful function that allows for automated testing while you work. Automated testing will update the test results when a method has been modified. The framework allows customizable testing execution, but runnning all tests that fit a given regular expression given by the user from the console (Package Testing, n.d.).
 
