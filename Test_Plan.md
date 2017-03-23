@@ -33,5 +33,6 @@ The tests will produce a result or either, “Pass” or “Fail”. The tests t
 
 
 ## Test Deliverables
-''' Test deliverables are the documents that will be delivered by the testing team at the end of testing process.
-This may include test cases, sample data, test report, issue log. '''
+``` Test deliverables are the documents that will be delivered by the testing team at the end of testing process.
+This may include test cases, sample data, test report, issue log. 
+```
