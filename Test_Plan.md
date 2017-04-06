@@ -43,9 +43,12 @@ The tests will produce a result or either, “Pass” or “Fail”. The tests t
 
 ## Test Deliverables
 * Test plan document.
-** Test Features and items
-** Sample test data
-** Findings report
+  * Test Features and items
+  * Sample test data
+  * Findings report
 
 ## Staff and Training Needs
 All testers need to have an understanding of the functional and non-functional requirements of the application. All testers need to have knowledge of Go and the testing package built into Go. Staff will need to be familar with the to-do list software, and GitHub.
+
+## Schedule
+The schedule will be kept up to date on the to-do list software on Mitchel's local machine, and uploaded to the git repo.
