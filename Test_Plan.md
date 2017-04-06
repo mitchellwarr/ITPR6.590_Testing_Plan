@@ -41,8 +41,11 @@ The priority of the testing will be to ensure that the a large number of cases a
 
 The tests will produce a result or either, “Pass” or “Fail”. The tests that result as “Pass” will not be developed further, and are considered to meet the Hastings Driver Application initial requirements. The requirements that “Fail” will be marked as not behaving as expected. These failed requirements will be returned to development to ensure the test eventually passes.
 
-
 ## Test Deliverables
-``` Test deliverables are the documents that will be delivered by the testing team at the end of testing process.
-This may include test cases, sample data, test report, issue log. 
-```
+* Test plan document.
+** Test Features and items
+** Sample test data
+** Findings report
+
+## Staff and Training Needs
+All testers need to have an understanding of the functional and non-functional requirements of the application. All testers need to have knowledge of Go and the testing package built into Go. Staff will need to be familar with the to-do list software, and GitHub.
