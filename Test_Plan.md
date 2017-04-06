@@ -14,6 +14,16 @@ The top priority of the test plan is to prevent errors affecting the end user. T
 ### Constraints and Limitations
 The test plan cannot be 100% full coverage. The test plan is limited by the tester’s knowledge of the system, the time it takes for tests to be created, and the creativity of the testers. The tests cannot be fully comprehensive as computers are limited by the computation time of running a test.
 
+### Pass and Fail Criteria
+The ultimate goal of the test phase is to ensure that no defects are visible to the user. The test phase will be successful when the below criteria is meet:
+#### Unit Test Level
+* All functional requirements have a test case
+* All test cases have a unit test
+* 100% of unit test assertions pass
+#### Master Test Level
+* All unit tests pass
+* No additional defects are known
+
 ## Test items
 high level testing
 
