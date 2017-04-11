@@ -64,9 +64,21 @@ Drivers will end their driving session only if they’re on an exit
 
 	Postconditions:  
 	Check that the driver is still driving on city locations  
-	Check that the driver stops driving at the exit  
+	Check that the driver stops driving at the exit   
 
 __ITPR6.590A2-DRV003__  
+When a driver has exited the city, their location will be "outside city"  
+
+	Precondition:  
+	Build driver and network  
+
+	Execution:    
+	Move driver to an exit  
+
+	Postconditions:  
+	Check the drivers location is "outside city"  
+
+__ITPR6.590A2-DRV004__  
 Drivers can start at a set location  
 
 	Precondition:  
