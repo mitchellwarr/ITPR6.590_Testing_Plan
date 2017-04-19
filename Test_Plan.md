@@ -14,6 +14,10 @@ The top priority of the test plan is to prevent errors affecting the end user. T
 ### Constraints and Limitations
 The test plan cannot be 100% full coverage. The test plan is limited by the tester’s knowledge of the system, the time it takes for tests to be created, and the creativity of the testers. The tests cannot be fully comprehensive as computers are limited by the computation time of running a test.
 
+### budget constraints
+Students are poor. They hate spending money on assignments. Our budget is $0.
+
+
 ### Pass and Fail Criteria
 The ultimate goal of the test phase is to ensure that no defects are visible to the user. The test phase will be successful when the below criteria is meet:
 #### Unit Test Level
@@ -25,11 +29,16 @@ The ultimate goal of the test phase is to ensure that no defects are visible to 
 * No additional defects are known
 
 ## Test items
-high level testing
+Please see the high level testing [Component_Test_Plan](https://github.com/mitchellwarr/ITPR6.590_Testing_Plan/blob/master/Component_Test_Plan.md) 
 
 ## Features to be tested
+```
 features from users perspective
 links back to requirements
+```
+## Features not to be tested
+This section specifies the features and functionalities that are out of the scope for testing. It shall contain reasons of
+why these features will not be tested
 
 ## Approach to testing
 Testing will be performed in the testing framework “Testing” for the chosen language “Go”. The test plan will be written in a “Behaviour Driven Development” structured english style. 
@@ -43,7 +52,7 @@ The tests will produce a result or either, “Pass” or “Fail”. The tests t
 
 ## Test Deliverables
 * Test plan document.
-  * Test Features and items
+  * Test Features and items 
   * Sample test data
   * Findings report
 
@@ -51,4 +60,17 @@ The tests will produce a result or either, “Pass” or “Fail”. The tests t
 All testers need to have an understanding of the functional and non-functional requirements of the application. All testers need to have knowledge of Go and the testing package built into Go. Staff will need to be familar with the to-do list software, and GitHub.
 
 ## Schedule
-The schedule will be kept up to date on the to-do list software on Mitchel's local machine, and uploaded to the git repo.
+The schedule will be kept up to date using [to do list](http://abstractspoon.weebly.com/) and uploaded to the [git repo](https://github.com/mitchellwarr/ITPR6.590_Testing_Plan/blob/master/SoftwareTesting.tdl). 
+
+## Testing Tasks
+### Test scenarios
+Test scenarios are documented on in our [Component_Test_Plan](https://github.com/mitchellwarr/ITPR6.590_Testing_Plan/blob/master/Component_Test_Plan.md) 
+### Test Scrips
+Test scripts will be inside our [driver application](https://github.com/mitchellwarr/ITPR6.590_Testing_Plan/driverApp) 
+
+### Issue tracking
+Issue tracking will be kept on [github issue tracker](https://github.com/mitchellwarr/ITPR6.590_Testing_Plan/issues)
+
+## Envrionmental needs 
+The application is developed in Go. Set up on the envrioment is documented on [GoLang's website](https://golang.org/doc/install) 
+
