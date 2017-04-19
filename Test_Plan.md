@@ -64,7 +64,7 @@ The schedule will be kept up to date using [to do list](http://abstractspoon.wee
 
 ## Testing Tasks
 ### Test scenarios
-Test scenarios are documented on in our [Component_Test_Plan](https://github.com/mitchellwarr/ITPR6.590_Testing_Plan/blob/master/Component_Test_Plan.md) 
+Test scenarios are documented on in our [Test scenarios](https://github.com/mitchellwarr/ITPR6.590_Testing_Plan/blob/master/test_case_scenrios) 
 ### Test Scrips
 Test scripts will be inside our [driver application](https://github.com/mitchellwarr/ITPR6.590_Testing_Plan/driverApp) 
 
