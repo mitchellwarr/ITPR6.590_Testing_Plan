@@ -14,9 +14,8 @@ The top priority of the test plan is to prevent errors affecting the end user. T
 ### Constraints and Limitations
 The test plan cannot be 100% full coverage. The test plan is limited by the tester’s knowledge of the system, the time it takes for tests to be created, and the creativity of the testers. The tests cannot be fully comprehensive as computers are limited by the computation time of running a test.
 
-### budget constraints
-Students are poor. They hate spending money on assignments. Our budget is $0.
-
+### Budget constraints
+The development will be done under the constaint of time. The developed, documented and tested application will be delivered before the due date of 8th June 2017. The development will not incurr any expenses, and the budget of the development process is $0.
 
 ### Pass and Fail Criteria
 The ultimate goal of the test phase is to ensure that no defects are visible to the user. The test phase will be successful when the below criteria is meet:
@@ -56,8 +55,12 @@ The tests will produce a result or either, “Pass” or “Fail”. The tests t
   * Sample test data
   * Findings report
 
-## Staff and Training Needs
+## Development Team
+### Training Needs
 All testers need to have an understanding of the functional and non-functional requirements of the application. All testers need to have knowledge of Go and the testing package built into Go. Staff will need to be familar with the to-do list software, and GitHub.
+
+### Responsibilities
+The roles are shared, and both Sarah and Mitch will be responsible for all components and deliverables. Sarah will oversee the quality of documentation and Mitch will oversee the quality and design on the software and tests 
 
 ## Schedule
 The schedule will be kept up to date using [to do list](http://abstractspoon.weebly.com/) and uploaded to the [git repo](https://github.com/mitchellwarr/ITPR6.590_Testing_Plan/blob/master/SoftwareTesting.tdl). 
