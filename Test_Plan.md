@@ -57,13 +57,14 @@ The tests will produce a result or either, “Pass” or “Fail”. The tests t
 
 ## Development Team
 ### Training Needs
-All testers need to have an understanding of the functional and non-functional requirements of the application. All testers need to have knowledge of Go and the testing package built into Go. Staff will need to be familar with the to-do list software, and GitHub.
+All testers need to have an understanding of the functional and non-functional requirements of the application. All testers need to have knowledge of Go and the testing package built into Go. Staff will need to be familar with the [to-do list software](http://abstractspoon.weebly.com/), and [GitHub](https://github.com/).
 
 ### Responsibilities
 The roles are shared, and both Sarah and Mitch will be responsible for all components and deliverables. Sarah will oversee the quality of documentation and Mitch will oversee the quality and design on the software and tests 
 
 ## Schedule
 The schedule will be kept up to date using [to do list](http://abstractspoon.weebly.com/) and uploaded to the [git repo](https://github.com/mitchellwarr/ITPR6.590_Testing_Plan/blob/master/SoftwareTesting.tdl). 
+Sarah and Mitch will meet once a week to disucss and implement the assignment applcaition.
 
 ## Testing Tasks
 ### Test scenarios
@@ -76,4 +77,14 @@ Issue tracking will be kept on [github issue tracker](https://github.com/mitchel
 
 ## Envrionmental needs 
 The application is developed in Go. Set up on the envrioment is documented on [GoLang's website](https://golang.org/doc/install) 
+
+## Risks and contingencies
+* The application does not compile and thus no tests are able to be run.
+ * Develop in a TDD style where the application remains at a managable state
+ * Keep the repositiory up-to-date with good mile stones, so a roll back can be done.
+* The development becomes behind schedule
+ * Maintain communication between team members (through telegram and github)
+
+
+
 
