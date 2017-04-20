@@ -1,19 +1,21 @@
 package main
 
-// type driver struct {
-// 	location   *node
-// 	visitCount int
-// }
+import "math/rand"
 
-// func (d *driver) Move(r rand) {
-// 	index := r * 2
-// 	d.location = d.location.paths[0]
-// 	if d.location.name == "a place" {
-// 		d.visitCount++
-// 	}
-// 	return "a message"
-// }
+type driver struct {
+	location   *node
+	visitCount int
+}
 
-// func (d *driver) VisitMessage() {
-// 	return "visit message"
-// }
+func (d *driver) Move(r *rand.Rand) *node {
+	index := int(r.Float64() * 2)
+	d.location, _ = d.location.paths[index].getNeighbour(d.location)
+	if d.location.name == "a place" {
+		d.visitCount++
+	}
+	return d.location
+}
+
+func (d *driver) VisitMessage() string {
+	return "visit message"
+}

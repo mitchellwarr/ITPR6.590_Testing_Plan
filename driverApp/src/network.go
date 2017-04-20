@@ -1,21 +1,32 @@
 package main
 
-// type node struct {
-// 	name string
-// 	paths []path
-// }
+import (
+	"errors"
+)
 
-// type path struct {
-// 	node_01 *node
-// 	node_02 *node
-// }
+type node struct {
+	name  string
+	paths []path
+}
 
-// func (p *path) getNeighbour(n *node) {
-// 	if n == p.node_01 {
-// 		return p.node_02
-// 	}
-// 	if n == p.node_02 {
-// 		return p.node_01
-// 	}
-// 	return err
-// }
+type path struct {
+	node01 *node
+	node02 *node
+}
+
+type network struct {
+}
+
+func (p *path) getNeighbour(n *node) (*node, error) {
+	if n == p.node01 {
+		return p.node02, nil
+	}
+	if n == p.node02 {
+		return p.node01, nil
+	}
+	return nil, errors.New("Path does not contain node")
+}
+
+func loadNewNetwork(filePath string) network {
+
+}

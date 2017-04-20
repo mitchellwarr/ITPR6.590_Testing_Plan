@@ -14,8 +14,8 @@ func main() {
 	if err != nil {
 		fmt.Print(err)
 	}
-	fmt.Println(input)
-	// randGen := getRandomGen(input)
+	// randGen, _ := getRandomGen(input)
+	network = loadNewNetwork("./map.json")
 	// for i := 0; i <= driverNumbers; i++ {
 	// 	d := driver{}
 	// 	startJourney(d)
