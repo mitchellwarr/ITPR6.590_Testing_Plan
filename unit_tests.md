@@ -1,0 +1,144 @@
+# Unit tests
+### LOC - Locations
+__ITPR6.590A2-LOC001__  
+Node map should be loadable
+
+	Execution:  
+	Successfully retrieve JSON map file  
+	Load JSON map file
+
+	Postconditions:  
+	Test that all nodes have been created  
+
+__ITPR6.590A2-LOC002__  
+Node map should be set up with four city locations  
+
+	Preconditions:  
+	Load map JSON file  
+
+	Execution:  
+	Build Locations from file  
+	Retrieve node network  
+
+	Postconditions:  
+	Test that there are four city nodes	  
+
+__ITPR6.590A2-LOC003__  
+Node map should be set up with four exit locations  
+
+	Preconditions:  
+	Load map JSON file  
+
+	Execution:  
+	Build Locations from file  
+	Retrieve node network  
+
+	Postconditions:  
+	Test that there are four exit nodes  
+
+### DRV - Driver  
+
+__ITPR6.590A2-DRV001__  
+Drivers can move to another node given an input  
+
+	Precondition:  
+	Build driver and network  
+  
+	Execution:  
+  #### Test driver moves from "Mayfair to Akina"
+  call `Move` method with a `Sarah to insert this number`
+  
+  
+	 
+	Move driver with float  
+
+	Postconditions:  
+	Check that driver has moved to the right node  
+
+__ITPR6.590A2-DRV002__  
+Drivers will end their driving session only if they’re on an exit  
+
+	Precondition:  
+	Build driver and network  
+
+	Execution:  
+	Set drivers starting path  
+	Move driver to a city location  
+	Move driver to an exit  
+
+	Postconditions:  
+	Check that the driver is still driving on city locations  
+	Check that the driver stops driving at the exit   
+
+__ITPR6.590A2-DRV003__  
+When a driver has exited the city, their location will be "outside city"  
+
+	Precondition:  
+	Build driver and network  
+
+	Execution:    
+	Move driver to an exit  
+
+	Postconditions:  
+	Check the drivers location is "outside city"  
+
+__ITPR6.590A2-DRV004__  
+Drivers can start at a set location  
+
+	Precondition:  
+	Build driver and network  
+	Pick a seeded number  
+
+	Execution:  
+	Set drivers starting location with the seeded number  
+
+	Postconditions:  
+	Check that the driver is at the expected starting location  
+
+### SYS - System  
+
+ITPR6.590A2-SYS001
+The random generator can be set by an input  
+
+	Precondition:  
+	Build system  
+
+	Execution:  
+  #### Correct input
+  Execute: call `getRandomGen` method, with an input of `100`
+  Assert:  getRandomGen returns `0.8165026937796166`
+  
+  #### Input as a string
+  Execute: call `getRandomGen` method, with an input of `one hundred`
+  Assert:  getRandomGen returns `0.8165026937796166` because 0 is actually uses.
+  
+  #### Correct input: input as a 0
+  Execute: call `getRandomGen` method, with an input of `0`
+  Assert:  getRandomGen returns `0.8165026937796166`.
+
+__ITPR6.590A2-SYS002__  
+The system should iterate through 5 drivers  
+
+	Precondition:  
+	Build system  
+
+	Execution:  
+	Set seed  
+	Run system  
+
+	Postconditions:  
+	Check that there have only been 5 drivers  
+
+__ITPR6.590A2-SYS003__  
+The system should print on screen appropriate messages  
+
+	Precondition:  
+	Build system  
+
+	Execution:  
+	Set seed  
+	Run system  
+	Save messages returned by drivers  
+
+	Postconditions:  
+	Check that the messages sent by the drivers are expected  
