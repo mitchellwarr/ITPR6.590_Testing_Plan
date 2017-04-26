@@ -10,6 +10,8 @@ The driver will decide what his next place to visit will be using a probablity c
 The driver will have 20% chance of taking an exit over another location. This means that 80% of the time, the driver will continue to drive to the next loction in the city.
 
 ## Seed
+If the code passes an unexpected input to the random generator method, the seed will default to 0. This means the result should always give out "0.9451961492941164".
+
 
 ## Reporting
 This application is console based. There is no specifications on how the driver will report where it in on the map. 
