@@ -1,5 +1,35 @@
 {
     "locations": [{
-        
+        "name": "Outside City",
+        "id": 0
+    },{
+        "name": "Mayfair",
+        "id": 1
+    },{
+        "name": "Akina",
+        "id": 2
+    },{
+        "name": "Stortford Lodge",
+        "id": 3
+    },{
+        "name": "Mahora",
+        "id": 4
+    }],
+    "paths": [{
+        "p1": 1,
+        "p2": 2,
+        "exit": "Havelock Road"
+    },{
+        "p1": 2,
+        "p2": 3,
+        "exit": "Railway Road"
+    },{
+        "p1": 3,
+        "p2": 4,
+        "exit": "Omahu Road"
+    },{
+        "p1": 4,
+        "p2": 1,
+        "exit": "Karamu Road"
     }]
 }

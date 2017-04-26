@@ -15,7 +15,7 @@ func main() {
 		fmt.Print(err)
 	}
 	// randGen, _ := getRandomGen(input)
-	network = loadNewNetwork("./map.json")
+	cityNetwork = LoadNewNetwork("./map.json")
 	// for i := 0; i <= driverNumbers; i++ {
 	// 	d := driver{}
 	// 	startJourney(d)
