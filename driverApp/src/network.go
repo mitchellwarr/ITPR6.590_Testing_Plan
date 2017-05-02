@@ -8,6 +8,7 @@ import (
 
 type node struct {
 	name  string
+	id    int
 	paths []path
 }
 
@@ -27,8 +28,13 @@ func (p *path) getNeighbour(n *node) (*node, error) {
 	return nil, errors.New("Path does not contain node")
 }
 
-type network struct {
+type Network struct {
 	locations []*node
+}
+
+type mapJSON struct {
+	Locations []locationJSON `json:"locations"`
+	Paths     []pathJSON     `json:"paths"`
 }
 
 type locationJSON struct {
@@ -42,27 +48,24 @@ type pathJSON struct {
 	Exit string `json:"exit"`
 }
 
-type mapJSON struct {
-	Locations []locationJSON `json:"locations"`
-	Paths     []pathJSON     `json:"paths"`
-}
-
-func loadMapJSON(jsonInput []byte) mapJSON {
-	var mapjson mapJSON
-	json.Unmarshal(jsonInput, &mapjson)
-	return mapjson
-}
-
-func LoadNewNetwork(filePath string) network {
+func loadNewNetwork(filePath string) Network {
 	file := getFileByte(filePath)
 	mapjson := loadMapJSON(file)
 
-	newNetwork := network{locations: make([]*node, 0)}
+	newNetwork := Network{locations: make([]*node, 0)}
 	for i, el := range mapjson.Locations {
-		newNode := &node{name: el.Name, paths: make([]path, 0)}
+		newNode := &node{id: el.ID, name: el.Name, paths: make([]path, 0)}
 		newNetwork.locations = append(newNetwork.locations, newNode)
+		if i != 0 {
+			newPath := path{
+				node01: newNetwork.locations[i],
+				node02: newNetwork.locations[0],
+				exit:   "Exit City",
+			}
+			newNetwork.locations[i].paths = append(newNetwork.locations[i].paths, newPath)
+		}
 	}
-	for i, el := range mapjson.Paths {
+	for _, el := range mapjson.Paths {
 		newPath := path{
 			node01: newNetwork.locations[el.P1],
 			node02: newNetwork.locations[el.P2],
@@ -72,6 +75,12 @@ func LoadNewNetwork(filePath string) network {
 		newNetwork.locations[el.P2].paths = append(newNetwork.locations[el.P2].paths, newPath)
 	}
 	return newNetwork
+}
+
+func loadMapJSON(jsonInput []byte) mapJSON {
+	var mapjson mapJSON
+	json.Unmarshal(jsonInput, &mapjson)
+	return mapjson
 }
 
 func getFileByte(filePath string) []byte {

@@ -6,39 +6,46 @@ import (
 	"strconv"
 )
 
+const (
+	DriverCount   = 5
+	OutsideCityID = 0
+	AkinaCityID   = 2
+	MapFile       = "./map.json"
+	ChanceToExit  = 1 / 5
+)
+
 func main() {
-	const driverNumbers = 5
 	fmt.Print("Enter seed: ")
-	var input string
-	_, err := fmt.Scanf("%v", &input)
-	if err != nil {
-		fmt.Print(err)
+	input := getInput()
+	randGen, _ := getRandomGen(input)
+	cityNetwork := loadNewNetwork(MapFile)
+	for i := 0; i <= DriverCount; i++ {
+		d := newDriver(i)
+		fmt.Println(d.start(randGen, cityNetwork))
+		for d.driverInCity() {
+			fmt.Println(d.move(randGen))
+		}
+		fmt.Println(d.visitMessage())
 	}
-	// randGen, _ := getRandomGen(input)
-	cityNetwork = LoadNewNetwork("./map.json")
-	// for i := 0; i <= driverNumbers; i++ {
-	// 	d := driver{}
-	// 	startJourney(d)
-	// }
 }
 
 func getRandomGen(input string) (*rand.Rand, error) {
 	i, err := strconv.ParseInt(input, 10, 64)
-	if err != nil {
-		s := rand.NewSource(0)
-		return rand.New(s), err
+	s := rand.NewSource(0)
+	if err == nil {
+		s = rand.NewSource(i)
 	}
-	s := rand.NewSource(i)
-	return rand.New(s), nil
+	return rand.New(s), err
 }
 
-// func startJourney(d *driver) {
-// 	for driverInCity(d) {
-// 		fmt.println(d.move())
-// 	}
-// 	fmt.println(d.visitMessage())
-// }
-
-// func driverInCity(d *driver) {
-// 	return true
-// }
+func getInput() string {
+	var input string
+	for {
+		_, err := fmt.Scanf("%v", &input)
+		if err == nil {
+			break
+		}
+		fmt.Print(err)
+	}
+	return input
+}
