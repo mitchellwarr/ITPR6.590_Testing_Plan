@@ -18,18 +18,22 @@
     "paths": [{
         "p1": 1,
         "p2": 2,
-        "exit": "Havelock Road"
+        "name": "Havelock Road",
+        "message": ""
     },{
         "p1": 2,
         "p2": 3,
-        "exit": "Railway Road"
+        "name": "Railway Road",
+        "message": ""
     },{
         "p1": 3,
         "p2": 4,
-        "exit": "Omahu Road"
+        "name": "Omahu Road",
+        "message": ""
     },{
         "p1": 4,
         "p2": 1,
-        "exit": "Karamu Road"
+        "name": "Karamu Road",
+        "message": ""
     }]
 }

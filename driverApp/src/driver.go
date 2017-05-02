@@ -29,19 +29,19 @@ func (d *driver) start(r *rand.Rand, n Network) string {
 
 func (d *driver) move(r *rand.Rand) string {
 	from := d.location.name
-	pathTaken := d.pickNeighbourPath(r)
-	d.location, _ = pathTaken.getNeighbour(d.location)
+	d.location = d.pickNeighbour(r)
 	d.tryExit(r)
 	d.tryMeetJohn()
 	return fmt.Sprintf(
-		"Driver %d heading from %v to %v via [%v].",
-		d.driverID, from, d.location.name, pathTaken.exit,
+		"Driver %d heading from %v to %v.",
+		d.driverID, from, d.location.name,
 	)
 }
 
-func (d *driver) pickNeighbourPath(r *rand.Rand) path {
+func (d *driver) pickNeighbour(r *rand.Rand) *node {
 	index := int(r.Float64() * 2)
-	return d.location.paths[index]
+	location, _ := d.location.paths[index].getNeighbour(d.location)
+	return location
 }
 
 func (d *driver) tryMeetJohn() {

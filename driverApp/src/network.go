@@ -13,9 +13,11 @@ type node struct {
 }
 
 type path struct {
-	node01 *node
-	node02 *node
-	exit   string
+	node01   *node
+	node02   *node
+	exit     *node
+	name     string
+	messsage string
 }
 
 func (p *path) getNeighbour(n *node) (*node, error) {
@@ -43,9 +45,10 @@ type locationJSON struct {
 }
 
 type pathJSON struct {
-	P1   int    `json:"p1"`
-	P2   int    `json:"p2"`
-	Exit string `json:"exit"`
+	P1      int    `json:"p1"`
+	P2      int    `json:"p2"`
+	Name    string `json:"name"`
+	Message string `json:"message"`
 }
 
 func loadNewNetwork(filePath string) Network {
@@ -53,23 +56,17 @@ func loadNewNetwork(filePath string) Network {
 	mapjson := loadMapJSON(file)
 
 	newNetwork := Network{locations: make([]*node, 0)}
-	for i, el := range mapjson.Locations {
+	for _, el := range mapjson.Locations {
 		newNode := &node{id: el.ID, name: el.Name, paths: make([]path, 0)}
 		newNetwork.locations = append(newNetwork.locations, newNode)
-		if i != 0 {
-			newPath := path{
-				node01: newNetwork.locations[i],
-				node02: newNetwork.locations[0],
-				exit:   "Exit City",
-			}
-			newNetwork.locations[i].paths = append(newNetwork.locations[i].paths, newPath)
-		}
 	}
 	for _, el := range mapjson.Paths {
 		newPath := path{
-			node01: newNetwork.locations[el.P1],
-			node02: newNetwork.locations[el.P2],
-			exit:   el.Exit,
+			node01:   newNetwork.locations[el.P1],
+			node02:   newNetwork.locations[el.P2],
+			messsage: el.Message,
+			name:     el.Name,
+			exit:     newNetwork.locations[0],
 		}
 		newNetwork.locations[el.P1].paths = append(newNetwork.locations[el.P1].paths, newPath)
 		newNetwork.locations[el.P2].paths = append(newNetwork.locations[el.P2].paths, newPath)
