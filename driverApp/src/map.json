@@ -19,21 +19,21 @@
         "p1": 1,
         "p2": 2,
         "name": "Havelock Road",
-        "message": ""
+        "city": ""
     },{
         "p1": 2,
         "p2": 3,
         "name": "Railway Road",
-        "message": ""
+        "city": ""
     },{
         "p1": 3,
         "p2": 4,
         "name": "Omahu Road",
-        "message": ""
+        "city": ""
     },{
         "p1": 4,
         "p2": 1,
         "name": "Karamu Road",
-        "message": ""
+        "city": ""
     }]
 }

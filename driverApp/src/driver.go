@@ -7,6 +7,7 @@ type driver struct {
 	location   *node
 	visitCount int
 	driverID   int
+	exitCity   string
 }
 
 func newDriver(id int) driver {
@@ -20,6 +21,8 @@ func (driver) driverInCity() bool {
 }
 
 func (d *driver) visitMessage() string {
+	// Driver 4 has gone to Napier
+	// Driver 4 met with John Jamieson 1 time(s).
 	return "visit message"
 }
 
@@ -30,7 +33,6 @@ func (d *driver) start(r *rand.Rand, n Network) string {
 func (d *driver) move(r *rand.Rand) string {
 	from := d.location.name
 	d.location = d.pickNeighbour(r)
-	d.tryExit(r)
 	d.tryMeetJohn()
 	return fmt.Sprintf(
 		"Driver %d heading from %v to %v.",
@@ -40,7 +42,12 @@ func (d *driver) move(r *rand.Rand) string {
 
 func (d *driver) pickNeighbour(r *rand.Rand) *node {
 	index := int(r.Float64() * 2)
-	location, _ := d.location.paths[index].getNeighbour(d.location)
+	pathTaken := d.location.paths[index]
+	location, _ := pathTaken.getNeighbour(d.location)
+	if d.checkExit(r) {
+		location = pathTaken.exit
+		d.exitCity = pathTaken.city
+	}
 	return location
 }
 
@@ -50,8 +57,6 @@ func (d *driver) tryMeetJohn() {
 	}
 }
 
-func (d *driver) tryExit(r *rand.Rand) {
-	if r.Float64() < ChanceToExit {
-		d.location, _ = d.location.paths[0].getNeighbour(d.location)
-	}
+func (d *driver) checkExit(r *rand.Rand) bool {
+	return r.Float64() < ChanceToExit
 }
