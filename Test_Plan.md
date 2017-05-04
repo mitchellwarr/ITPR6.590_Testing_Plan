@@ -1,11 +1,10 @@
 # ITPR6590 - 0A23 TEST PLAN
 
 ## Introduction
-### Objective
-The test plan objective is to test that the expected behaviour is the same as the observed behaviour for the Hastings Driving Application. The test plan will be used as a prompt for further development to mitigate areas where the system has been behaving in an unexpected manner. 
+This master level test plan is designed to set the requirements for the Hastings Driving Application.
 
 ### Scope
-The test plan is created in the scope of the system functional requirements. The test plan will not test external modules, hardware or the Go language. The tests created by the testers will not be tested. The test plan will not be used to report on the efficiently or performance of the system in any environment.
+The scope of this system exists within the functional requirements provided in the requirements documentation. This plan will define how to test that the program has met all of its requirements, as well as lining out the individual unit tests that will define the underlining behaviour. The test plan will not test external modules, hardware or the Go language. The tests created by the testers will not be tested. The test plan will not be used to report on the efficiently or performance of the system in any environment.
 
 ### Goals
 The goal of the test plan is to cover as many scenarios as possible, with the least amount of tests. We will achieve this goal by using equivalence classes, to cover a large number of inputs.
@@ -68,7 +67,8 @@ Sarah and Mitch will meet once a week to disucss and implement the assignment ap
 
 ## Testing Tasks
 ### Test scenarios
-Test scenarios are documented on in our [Test scenarios](https://github.com/mitchellwarr/ITPR6.590_Testing_Plan/blob/master/test_case_scenrios) 
+Test scenarios are documented on in our [Test scenarios](https://github.com/mitchellwarr/ITPR6.590_Testing_Plan/blob/master/test_case_scenrios)
+
 ### Test Scrips
 Test scripts will be inside our [driver application](https://github.com/mitchellwarr/ITPR6.590_Testing_Plan/driverApp) 
 
