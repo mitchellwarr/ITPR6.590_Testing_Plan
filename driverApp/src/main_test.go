@@ -28,3 +28,7 @@ func TestGetRandomGen(t *testing.T) {
 		t.Error("Expected error, got ", err)
 	}
 }
+
+func TestGetInput(t *testing.T) {
+
+}
