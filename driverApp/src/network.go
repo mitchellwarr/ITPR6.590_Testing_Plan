@@ -55,9 +55,15 @@ func loadNewNetwork(filePath string) Network {
 	file := getFileByte(filePath)
 	mapjson := loadMapJSON(file)
 
-	newNetwork := Network{locations: make([]*node, 0)}
+	newNetwork := Network{
+		locations: make([]*node, 0)
+	}
 	for _, el := range mapjson.Locations {
-		newNode := &node{id: el.ID, name: el.Name, paths: make([]path, 0)}
+		newNode := &node{
+			id: el.ID,
+			name: el.Name,
+			paths: make([]path, 0)
+		}
 		newNetwork.locations = append(newNetwork.locations, newNode)
 	}
 	for _, el := range mapjson.Paths {
