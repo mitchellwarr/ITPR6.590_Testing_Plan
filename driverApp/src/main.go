@@ -31,11 +31,13 @@ func main() {
 
 func getRandomGen(input string) (*rand.Rand, error) {
 	i, err := strconv.ParseInt(input, 10, 64)
-	s := rand.NewSource(0)
+	var r rand.Rand
 	if err == nil {
-		s = rand.NewSource(i)
+		r = rand.New(rand.NewSource(i))
+	} else {
+		r = rand.New(rand.NewSource(0))
 	}
-	return rand.New(s), err
+	return &r, err
 }
 
 func getInput() string {
