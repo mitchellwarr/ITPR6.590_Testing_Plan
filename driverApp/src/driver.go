@@ -16,8 +16,8 @@ func newDriver(id int) driver {
 	return nd
 }
 
-func (driver) driverInCity() bool {
-	return true
+func (d *driver) driverInCity() bool {
+	return d.location.id != OutsideCityID
 }
 
 func (d *driver) visitMessage() string {
@@ -41,7 +41,7 @@ func (d *driver) move(r *rand.Rand) string {
 }
 
 func (d *driver) pickNeighbour(r *rand.Rand) *node {
-	index := int(r.Float64() * 2)
+	index := int(r.Float64() * len(d.locations.paths))
 	pathTaken := d.location.paths[index]
 	location, _ := pathTaken.getNeighbour(d.location)
 	if d.checkExit(r) {
