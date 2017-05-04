@@ -7,14 +7,18 @@ This master level test plan is designed to set the requirements for the Hastings
 The scope of this system exists within the functional requirements provided in the requirements documentation. This plan will define how to test that the program has met all of its requirements, as well as lining out the individual unit tests that will define the underlining behaviour. The test plan will not test external modules, hardware or the Go language. The tests created by the testers will not be tested. The test plan will not be used to report on the efficiently or performance of the system in any environment.
 
 ### Goals
-The goal of the test plan is to cover as many scenarios as possible, with the least amount of tests. We will achieve this goal by using equivalence classes, to cover a large number of inputs.
-The top priority of the test plan is to prevent errors affecting the end user. The testing will be put in place to ensure the mitigation of the program suffering from an unhandled run-time error. 
+The program is intended to simulate a driver in hastings, tryign to pick up John Jamieson in Akina. It is a very simple and abstracted simulation. The goal of this test plan is to outline how these simulation requirements for the program, translate into testable scenarios, and testable code. It will be impossible to cover every last scenario, however this plan will outline key scenarios and equivalance classes that cover the most important aspects of the user experience. It is also intended to balance high test coverage, with low time and code investments spent into creating these tests.  
+This goal will be achieved by selecting important equivalence classes to cover a large number of inputs; as well as selecting the most important, and likely, edge cases that are made possible by the code structure.  
+The top priority is to prevent errors affecting the end user. The testing will be put in place to ensure the mitigation of the program suffering from an unhandled run-time error. 
 
 ### Constraints and Limitations
-The test plan cannot be 100% full coverage. The test plan is limited by the tester’s knowledge of the system, the time it takes for tests to be created, and the creativity of the testers. The tests cannot be fully comprehensive as computers are limited by the computation time of running a test.
+It is not intended that everything possibility will be covered by the described tests and methods. Time investment poses as the biggest limitation on both the construction of this plan, and on the breadth of tests that can be put in place for the development of the program.  
+This plan is also focused on a skill level befitting students. It is intended to not cover areas that fall outside the range that a student could be expected to consider: Both in the depth of documentation, and in the tests written.  
 
 ### Budget constraints
-The development will be done under the constaint of time. The developed, documented and tested application will be delivered before the due date of 8th June 2017. The development will not incurr any expenses, and the budget of the development process is $0.
+The size of this plan, and the program created off the resulting size of this plans description, will be developed within a very tight time constraint. In terms of time, the team has only a small amount to spare on this project. The developed document and tested application are to be delivered before the due date of 8th June 2017. The team has been planned to work for only a few hours a week.  
+In terms of cost, with each team member working under a conservative $30 an hour, this project is likely to take $4,000 to produce. However, under the budget, money will be saved by the fact that the team is made up of students, who are working for free and under their own time.  
+Overall the development will not incurr any expenses, and the budget of the development process is $0. However, the project does create a significant time investment that will keep the program small.
 
 ### Pass and Fail Criteria
 The ultimate goal of the test phase is to ensure that no defects are visible to the user. The test phase will be successful when the below criteria is meet:
