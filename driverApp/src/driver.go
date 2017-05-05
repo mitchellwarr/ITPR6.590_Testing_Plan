@@ -41,7 +41,7 @@ func (d *driver) move(r *rand.Rand) string {
 }
 
 func (d *driver) pickNeighbour(r *rand.Rand) *node {
-	index := int(r.Float64() * len(d.locations.paths))
+	index := int(r.Float64()) * len(d.location.paths)
 	pathTaken := d.location.paths[index]
 	location, _ := pathTaken.getNeighbour(d.location)
 	if d.checkExit(r) {
