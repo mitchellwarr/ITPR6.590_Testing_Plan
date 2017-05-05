@@ -27,6 +27,9 @@ func (d *driver) visitMessage() string {
 }
 
 func (d *driver) start(r *rand.Rand, n Network) string {
+	// Initalise the location
+	index := int(r.Float64())
+	d.location = n.locations[index]
 	return "starting"
 }
 

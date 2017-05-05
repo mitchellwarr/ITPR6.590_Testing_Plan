@@ -21,8 +21,10 @@ func main() {
 	cityNetwork := LoadNewNetwork(MapFile)
 	for i := 0; i <= DriverCount; i++ {
 		d := newDriver(i)
+		
 		fmt.Println(d.start(randGen, cityNetwork))
-		for d.driverInCity() {
+
+		if d.driverInCity() {
 			fmt.Println(d.move(randGen))
 		}
 		fmt.Println(d.visitMessage())
@@ -31,13 +33,16 @@ func main() {
 
 func getRandomGen(input string) (*rand.Rand, error) {
 	i, err := strconv.ParseInt(input, 10, 64)
-	var r rand.Rand
+
+	var seedInt int64
 	if err == nil {
-		r = rand.New(rand.NewSource(i))
-	} else {
-		r = rand.New(rand.NewSource(0))
+		seedInt = int64(i)		
+	} else{
+		seedInt = 0
 	}
-	return &r, err
+
+	r := rand.New(rand.NewSource(seedInt))
+	return r, err
 }
 
 func getInput() string {
