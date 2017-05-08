@@ -33,6 +33,8 @@ The ultimate goal of the test phase is to ensure that no defects are visible to 
 ## Test items
 Please see the high level testing [Component_Test_Plan](https://github.com/mitchellwarr/ITPR6.590_Testing_Plan/blob/master/Component_Test_Plan.md) 
 
+#NEEDS WORKING ON!! :P
+```
 ## Features to be tested
 ```
 features from users perspective
@@ -47,20 +49,18 @@ starting randomly
 ## Features not to be tested
 This section specifies the features and functionalities that are out of the scope for testing. It shall contain reasons of
 why these features will not be tested
+```
 
 ## Approach to testing
 The testing method selected is a form of TDD. There will be a focus on unit tests that define the structure of the code, however these tests will only cover the set requirements. This means that only enough tests will be planned so that it can be proved when the program meets all requirements. Further exploritory tests will be done to find any code breaking bugs. Once found, unit tests will be written to ensure these bugs don't reamerge.  
 
-Unit tests will be written before the cods is written. However, the code structure will be explored and decided on first. Only after the structure of classes and their relationships are set, are unit tests written for the requirements, and then methods written to sastify those tests.
+Unit tests will be written before the cods is written. However, the code structure will be explored and decided on first. Only after the structure of classes and their relationships are set, are unit tests written for the requirements, and then methods written to sastify those tests.  
 
-The testing framework used in the programs development willbe the native "Testing" framework available in the Go language. The test plan will be written in a “Behaviour Driven Development” structured english style.  
+The testing framework used in the programs development will be the native "Testing" framework available in the Go language.  
 
-The test plan priority is to ensure the application does not crash, due to unhandled runtime errors.
-Unit tests will be to automate testing, and document the tests run. Integration tests will be used to test the methods in an application context. The tests will use data from a data structure to mock a database.  
+To ensure that the code tested not only fulfils the requirements, but will continue to do so under a variety of inputs; edge cases, boundry cases, and possible equivalence class combinations will be tested as well, where possible. This helps to ensure that the program, even though satisfying the requirements, will not then become faulty under unforseen usage scenarios.    
 
-The priority of the testing will be to ensure that the a large number of cases are covered, using equivalence classes, to test invalid, boundary and valid.  
-
-The tests will produce a result or either, “Pass” or “Fail”. The tests that result as “Pass” will not be developed further, and are considered to meet the Hastings Driver Application initial requirements. The requirements that “Fail” will be marked as not behaving as expected. These failed requirements will be returned to development to ensure the test eventually passes.  
+The tests will produce a result or either, “Pass” or “Fail”. The tests that result as “Pass” will not be developed further, and are considered to meet the Hastings Driver Application initial requirements. The requirements that “Fail” will be marked as not behaving as expected. These failed requirements will be returned to development to ensure the test eventually passes. To comunicate between the testing process and coding process of development, all issues will be tracked as they fail. A new issue will be logged describing what aspect was being tested, and once the development process has gotten the code to satisfy the test; the issue will be closed and marked as resolved. If a previously resolved issue reapears, it will be marked as a new issue.   
 
 ## Test Deliverables
 * Test plan document.
