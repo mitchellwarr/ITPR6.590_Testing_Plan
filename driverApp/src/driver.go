@@ -26,16 +26,21 @@ func (d *driver) visitMessage() string {
 	return "visit message"
 }
 
-func (d *driver) start(r *rand.Rand, n Network) string {
+func (d *driver) start(r float64, n Network) string {
 	// Initalise the location
-	index := int(r.Float64())
+	index := int(r)
 	d.location = n.locations[index]
 	return "starting"
 }
 
 func (d *driver) move(r *rand.Rand) string {
 	from := d.location.name
-	d.location = d.pickNeighbour(r)
+	path := d.pickPath(r.Float64())
+	d.location, _ = path.getNeighbour(d.location)
+	if d.checkExit(r.Float64()) {
+		d.location = path.exit
+		d.exitCity = path.city
+	}
 	d.tryMeetJohn()
 	return fmt.Sprintf(
 		"Driver %d heading from %v to %v.",
@@ -43,15 +48,10 @@ func (d *driver) move(r *rand.Rand) string {
 	)
 }
 
-func (d *driver) pickNeighbour(r *rand.Rand) *node {
-	index := int(r.Float64()) * len(d.location.paths)
+func (d *driver) pickPath(r float64) path {
+	index := int(r) * len(d.location.paths)
 	pathTaken := d.location.paths[index]
-	location, _ := pathTaken.getNeighbour(d.location)
-	if d.checkExit(r) {
-		location = pathTaken.exit
-		d.exitCity = pathTaken.city
-	}
-	return location
+	return pathTaken
 }
 
 func (d *driver) tryMeetJohn() {
@@ -60,6 +60,6 @@ func (d *driver) tryMeetJohn() {
 	}
 }
 
-func (d *driver) checkExit(r *rand.Rand) bool {
-	return r.Float64() < ChanceToExit
+func (d *driver) checkExit(r float64) bool {
+	return r < ChanceToExit
 }
