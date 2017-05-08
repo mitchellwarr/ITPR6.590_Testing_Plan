@@ -38,19 +38,29 @@ Please see the high level testing [Component_Test_Plan](https://github.com/mitch
 features from users perspective
 links back to requirements
 ```
+5 drivers
+messages
+changing location randomly
+exiting system
+starting randomly
+
 ## Features not to be tested
 This section specifies the features and functionalities that are out of the scope for testing. It shall contain reasons of
 why these features will not be tested
 
 ## Approach to testing
-Testing will be performed in the testing framework “Testing” for the chosen language “Go”. The test plan will be written in a “Behaviour Driven Development” structured english style. 
+The testing method selected is a form of TDD. There will be a focus on unit tests that define the structure of the code, however these tests will only cover the set requirements. This means that only enough tests will be planned so that it can be proved when the program meets all requirements. Further exploritory tests will be done to find any code breaking bugs. Once found, unit tests will be written to ensure these bugs don't reamerge.  
+
+Unit tests will be written before the cods is written. However, the code structure will be explored and decided on first. Only after the structure of classes and their relationships are set, are unit tests written for the requirements, and then methods written to sastify those tests.
+
+The testing framework used in the programs development willbe the native "Testing" framework available in the Go language. The test plan will be written in a “Behaviour Driven Development” structured english style.  
 
 The test plan priority is to ensure the application does not crash, due to unhandled runtime errors.
-Unit tests will be to automate testing, and document the tests run. Integration tests will be used to test the methods in an application context. The tests will use data from a data structure to mock a database.
+Unit tests will be to automate testing, and document the tests run. Integration tests will be used to test the methods in an application context. The tests will use data from a data structure to mock a database.  
 
-The priority of the testing will be to ensure that the a large number of cases are covered, using equivalence classes, to test invalid, boundary and valid.
+The priority of the testing will be to ensure that the a large number of cases are covered, using equivalence classes, to test invalid, boundary and valid.  
 
-The tests will produce a result or either, “Pass” or “Fail”. The tests that result as “Pass” will not be developed further, and are considered to meet the Hastings Driver Application initial requirements. The requirements that “Fail” will be marked as not behaving as expected. These failed requirements will be returned to development to ensure the test eventually passes.
+The tests will produce a result or either, “Pass” or “Fail”. The tests that result as “Pass” will not be developed further, and are considered to meet the Hastings Driver Application initial requirements. The requirements that “Fail” will be marked as not behaving as expected. These failed requirements will be returned to development to ensure the test eventually passes.  
 
 ## Test Deliverables
 * Test plan document.
