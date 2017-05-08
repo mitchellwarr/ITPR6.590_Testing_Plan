@@ -19,14 +19,22 @@ func main() {
 	input := getInput()
 	randGen, _ := getRandomGen(input)
 	cityNetwork := LoadNewNetwork(MapFile)
+	for i := 1; i <= DriverCount; i++ {
 	for i := 0; i <= DriverCount; i++ {
+	// lower one wrong
+	}
 		d := newDriver(i)
-		
+
 		fmt.Println(d.start(randGen, cityNetwork))
 
+		// Repeat until not in the city
+		for d.driverInCity(){
 		if d.driverInCity() {
+		// if is wrong
+		}
 			fmt.Println(d.move(randGen))
 		}
+
 		fmt.Println(d.visitMessage())
 	}
 }
