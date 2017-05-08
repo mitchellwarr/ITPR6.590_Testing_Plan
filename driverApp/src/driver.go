@@ -25,47 +25,43 @@ func (d *driver) visitMessage() string {
 	// Driver 4 met with John Jamieson 1 time(s).
 	var message string = ""
 
-    	// Refer to FUN-AKINA-COUNT
-    	message += fmt.Sprintf(
-    		"Driver %d met with John Jamieosn %v time(s).",
-    		d.driverID, d.visitCount,
-    	)
+	// Refer to FUN-AKINA-COUNT
+	message += fmt.Sprintf(
+		"Driver %d met with John Jamieosn %v time(s).",
+		d.driverID, d.visitCount,
+	)
 
-    	message += "\n"
+	message += "\n"
 
-    	// Refer to FUN-AKINA-EDGES
-    	if d.visitCount > 2 {
-    		message += "This driver needed lots of help!"
-    	}else if d.visitCount == 0 {
-    		message += "That passenger missed out!"
-    	}
+	// Refer to FUN-AKINA-EDGES
+	if d.visitCount > 2 {
+		message += "This driver needed lots of help!"
+	} else if d.visitCount == 0 {
+		message += "That passenger missed out!"
+	}
 
-    	message += "\n"
+	message += "\n"
 
-    	// Refer to FUN-DASHES
-    	message += "-----"
+	// Refer to FUN-DASHES
+	message += "-----"
 
-    	return message
-	//return "visit message"
-	return "visit message"
+	return message
 }
 
 func (d *driver) start(r *rand.Rand, n Network) string {
 	// Initalise the location
 	var index int
 	for{
-		index = int(r.Float64() * float64(len(n.locations)))
+		index = index = int(r.Float64()) //int(r.Float64() * float64(len(n.locations)))
 		if index != OutsideCityID{
 			break
 		}
 	}
-	index := int(r.Float64())
-	// index = int(r.Float64()) on line 56?
+	
 	d.location = n.locations[index]
 	d.tryMeetJohn()
 	startMessage := "starting at " + n.locations[index].name
 	return startMessage
-	return "starting"
 }
 
 func (d *driver) move(r *rand.Rand) string {
