@@ -36,11 +36,11 @@ func (d *driver) visitMessage() string {
 	// Refer to FUN-AKINA-EDGES
 	if d.visitCount > 2 {
 		message += "This driver needed lots of help!"
+		message += "\n"
 	} else if d.visitCount == 0 {
 		message += "That passenger missed out!"
-	}
-
-	message += "\n"
+		message += "\n"
+	}	
 
 	// Refer to FUN-DASHES
 	message += "-----"
@@ -57,12 +57,15 @@ func (d *driver) start(r float64, n Network) string {
 
 	d.location = n.locations[index]
 	d.tryMeetJohn()
-	startMessage := "starting at " + n.locations[index].name
+	startMessage := fmt.Sprintf(
+		"Driver %d starting at %v.",
+		d.driverID, n.locations[index].name,
+	)
 	return startMessage
 }
 
 func (d *driver) move(r *rand.Rand) string {
-	from := d.location.name
+	from := d.location.name 
 	path := d.pickPath(r.Float64())
 	d.location, _ = path.getNeighbour(d.location)
 	d.tryMeetJohn()
@@ -79,13 +82,8 @@ func (d *driver) move(r *rand.Rand) string {
 }
 
 func (d *driver) pickPath(r float64) path {
-	index := int(r) * len(d.location.paths)
+	index := int(r * float64(len(d.location.paths)))
 	pathTaken := d.location.paths[index]
-	// location, _ := pathTaken.getNeighbour(d.location)
-	// if d.checkExit(r) {
-	// 	location = pathTaken.exit
-	// 	d.exitCity = pathTaken.city
-	// }
 	return pathTaken
 }
 

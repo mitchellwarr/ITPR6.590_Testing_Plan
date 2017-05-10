@@ -11,7 +11,7 @@ const (
 	OutsideCityID = 0
 	AkinaCityID   = 2
 	MapFile       = "./map.json"
-	ChanceToExit  = 1 / 5
+	ChanceToExit  = 0.2 // 1 divided by 5
 )
 
 func main() {
@@ -25,7 +25,6 @@ func main() {
 		fmt.Println(d.start(randGen.Float64(), cityNetwork))
 		// Repeat until not in the city
 		for d.driverInCity(){
-			fmt.Print("driverInCity")
 			fmt.Println(d.move(randGen))
 		}
 
