@@ -49,19 +49,12 @@ func (d *driver) visitMessage() string {
 }
 
 func (d *driver) start(r float64, n Network) string {
-	// Initalise the location
-<<<<<<< HEAD
-	var index int
-	for{
-		index = index = int(r.Float64()) //int(r.Float64() * float64(len(n.locations)))
-		if index != OutsideCityID{
-			break
-		}
+	// Initalise the location and make sure driver starts in the city
+	var index int = OutsideCityID
+	for index == OutsideCityID {
+		index = int(r * float64(len(n.locations)))
 	}
-	
-=======
-	index := int(r)
->>>>>>> e69fecec3cc3a61a9593f1bb2cd3ade6e4e2d63f
+
 	d.location = n.locations[index]
 	d.tryMeetJohn()
 	startMessage := "starting at " + n.locations[index].name
@@ -72,11 +65,13 @@ func (d *driver) move(r *rand.Rand) string {
 	from := d.location.name
 	path := d.pickPath(r.Float64())
 	d.location, _ = path.getNeighbour(d.location)
+	d.tryMeetJohn()
+	
 	if d.checkExit(r.Float64()) {
 		d.location = path.exit
 		d.exitCity = path.city
 	}
-	d.tryMeetJohn()
+	
 	return fmt.Sprintf(
 		"Driver %d heading from %v to %v.",
 		d.driverID, from, d.location.name,
@@ -86,6 +81,11 @@ func (d *driver) move(r *rand.Rand) string {
 func (d *driver) pickPath(r float64) path {
 	index := int(r) * len(d.location.paths)
 	pathTaken := d.location.paths[index]
+	// location, _ := pathTaken.getNeighbour(d.location)
+	// if d.checkExit(r) {
+	// 	location = pathTaken.exit
+	// 	d.exitCity = pathTaken.city
+	// }
 	return pathTaken
 }
 
@@ -98,3 +98,33 @@ func (d *driver) tryMeetJohn() {
 func (d *driver) checkExit(r float64) bool {
 	return r < ChanceToExit
 }
+
+
+// func (d *driver) pickPath(r float64) path {
+// 	index := int(r) * len(d.location.paths)
+// func (d *driver) pickNeighbour(r *rand.Rand) *node {
+// 	index := int(r.Float64()) * len(d.location.paths)
+// 	pathTaken := d.location.paths[index]
+// 	return pathTaken
+// 	location, _ := pathTaken.getNeighbour(d.location)
+// 	if d.checkExit(r) {
+// 		location = pathTaken.exit
+// 		d.exitCity = pathTaken.city
+// 	}
+// 	return location
+// }
+
+// func (d *driver) pickPath(r float64) path {
+// 	index := int(r) * len(d.location.paths)
+// }
+// func (d *driver) pickPath(r float64) path {
+// 	index := int(r) * len(d.location.paths)
+// 	pathTaken := d.location.paths[index]
+// 	return pathTaken
+// 	location, _ := pathTaken.getNeighbour(d.location)
+// 	if d.checkExit(r) {
+// 		location = pathTaken.exit
+// 		d.exitCity = pathTaken.city
+// 	}
+// 	return location
+// }

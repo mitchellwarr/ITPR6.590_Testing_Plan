@@ -20,22 +20,12 @@ func main() {
 	randGen, _ := getRandomGen(input)
 	cityNetwork := LoadNewNetwork(MapFile)
 	for i := 1; i <= DriverCount; i++ {
-	for i := 0; i <= DriverCount; i++ {
-	// lower one wrong
-	}
 		d := newDriver(i)
 
-<<<<<<< HEAD
-		fmt.Println(d.start(randGen, cityNetwork))
-=======
 		fmt.Println(d.start(randGen.Float64(), cityNetwork))
->>>>>>> e69fecec3cc3a61a9593f1bb2cd3ade6e4e2d63f
-
 		// Repeat until not in the city
 		for d.driverInCity(){
-		if d.driverInCity() {
-		// if is wrong
-		}
+			fmt.Print("driverInCity")
 			fmt.Println(d.move(randGen))
 		}
 
@@ -49,7 +39,7 @@ func getRandomGen(input string) (*rand.Rand, error) {
 	var seedInt int64
 	if err == nil {
 		seedInt = int64(i)
-	} else {
+	} else{
 		seedInt = 0
 	}
 
@@ -63,8 +53,9 @@ func getInput() string {
 		_, err := fmt.Scanf("%v", &input)
 		if err == nil {
 			break
+		}else{
+			fmt.Print(err)
 		}
-		fmt.Print(err)
 	}
 	return input
 }
