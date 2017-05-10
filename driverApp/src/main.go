@@ -21,8 +21,8 @@ func main() {
 	cityNetwork := LoadNewNetwork(MapFile)
 	for i := 1; i <= DriverCount; i++ {
 		d := newDriver(i)
-
-		fmt.Println(d.start(randGen.Float64(), cityNetwork))
+		
+		fmt.Println(d.start(randGen, cityNetwork))
 		// Repeat until not in the city
 		for d.driverInCity(){
 			fmt.Println(d.move(randGen))
@@ -43,6 +43,7 @@ func getRandomGen(input string) (*rand.Rand, error) {
 	}
 
 	r := rand.New(rand.NewSource(seedInt))
+
 	return r, err
 }
 

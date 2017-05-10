@@ -42,17 +42,26 @@ func (d *driver) visitMessage() string {
 		message += "\n"
 	}	
 
+	// Refer to FUN-OTHER-CITIES
+	// Interpreted requirements, we do not display where the driver when if they did not exit via Karamu road or via Omahu Road
+	// This is not good coding convention, but, this excercise is to work with testing, not coding
+	if d.exitCity == "Napier" || d.exitCity == "Flaxmere" {
+		message += fmt.Sprintf("Driver has gone to %v", d.exitCity)
+		message += "\n"
+	}
+
 	// Refer to FUN-DASHES
 	message += "-----"
 
 	return message
 }
 
-func (d *driver) start(r float64, n Network) string {
+// This method requires a rand, and not a float, because we need to continue to randomly choose a start position until they are inside the city :)
+func (d *driver) start(r *rand.Rand, n Network) string {
 	// Initalise the location and make sure driver starts in the city
 	var index int = OutsideCityID
 	for index == OutsideCityID {
-		index = int(r * float64(len(n.locations)))
+		index = int(r.Float64() * float64(len(n.locations)))
 	}
 
 	d.location = n.locations[index]
