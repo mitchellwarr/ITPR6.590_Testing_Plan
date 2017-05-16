@@ -21,35 +21,32 @@ In terms of cost, with each team member working under a conservative $30 an hour
 Overall the development will not incurr any expenses, and the budget of the development process is $0. However, the project does create a significant time investment that will keep the program small.
 
 ### Pass and Fail Criteria
-The ultimate goal of the test phase is to ensure that no defects are visible to the user. The test phase will be successful when the below criteria is meet:
+The ultimate goal of the test phase is to ensure that no defects are visible to the user. Once the program has meet all tests outlined in this plan, the program will be said to meet the requirements. The tests will therefore server as the baseline, against which; confirmation can be drawn that the program has finished and sastifies the business requiremnts. The test phase will be successful when the below criteria is meet:
 #### Unit Test Level
 * All functional requirements have a test case
 * All test cases have a unit test
 * 100% of unit test assertions pass
 #### Master Test Level
 * All unit tests pass
-* No additional defects are known
+* No additional defects of the program can be found through typical user use cases
 
 ## Test items
 Please see the high level testing [Component_Test_Plan](https://github.com/mitchellwarr/ITPR6.590_Testing_Plan/blob/master/Component_Test_Plan.md) 
 
-# NEEDS WORKING ON!! :P
+# ToDo
 ```
 ## Features to be tested
-```
-features from users perspective
-links back to requirements
-```
+features from users perspective  
+links back to requirements  
+  
 5 drivers
 messages
 changing location randomly
 exiting system
 starting randomly
-
-## Features not to be tested
-This section specifies the features and functionalities that are out of the scope for testing. It shall contain reasons of
-why these features will not be tested
 ```
+## Features not to be tested
+In order to fulfil the feature outlining the psuedo-random nature of the program, a random generation library needs to be used. The effectiveness of this library is not to be tested. To which, it will not be tested that each time you call the random generator you get a different and random value in return. This is a third party library and therefore, is out of scope. What will be tested is on a high level, that given a seed, the program will always produce the same result.
 
 ## Approach to testing
 The testing method selected is a form of TDD. There will be a focus on unit tests that define the structure of the code, however these tests will only cover the set requirements. This means that only enough tests will be planned so that it can be proved when the program meets all requirements. Further exploritory tests will be done to find any code breaking bugs. Once found, unit tests will be written to ensure these bugs don't reamerge.  
