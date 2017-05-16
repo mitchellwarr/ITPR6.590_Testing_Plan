@@ -70,7 +70,7 @@ The tests will produce a result or either, “Pass” or “Fail”. The tests t
 All testers need to have an understanding of the functional and non-functional requirements of the application. All testers need to have knowledge of Go and the testing package built into Go. Staff will need to be familar with the [to-do list software](http://abstractspoon.weebly.com/), and [GitHub](https://github.com/).
 
 ### Responsibilities
-The roles are shared, and both Sarah and Mitch will be responsible for all components and deliverables. Sarah will oversee the quality of documentation and Mitch will oversee the quality and design on the software and tests 
+The testing team is composed of two members being Sarah Anderson, and Mitchell Warr. All roles will be shared amung the entire team. However, each of the members will take a more focused lead in certain roles. Mitchell will focus on the development of the program outlined in the test plan, and outlining the component test plan. Sarah will focus on creating the drafts for test plan documentation, and documenting and outlining the individual test cases. Both team members will share in writing and creating unit tests, and finishing all written documentation. Both Sarah and Mitch will be responsible for all components and deliverables, with each having the responibility to overlook and polish all aspects of the deliverables. It is intended that the test design is shared equally, while the implementation is split between members. 
 
 ## Schedule
 The schedule will be kept up to date using [to do list](http://abstractspoon.weebly.com/) and uploaded to the [git repo](https://github.com/mitchellwarr/ITPR6.590_Testing_Plan/blob/master/SoftwareTesting.tdl). 
