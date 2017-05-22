@@ -22,29 +22,27 @@ Overall the development will not incurr any expenses, and the budget of the deve
 
 ### Pass and Fail Criteria
 The ultimate goal of the test phase is to ensure that no defects are visible to the user. Once the program has meet all tests outlined in this plan, the program will be said to meet the requirements. The tests will therefore server as the baseline, against which; confirmation can be drawn that the program has finished and sastifies the business requiremnts. The test phase will be successful when the below criteria is meet:
+
 #### Unit Test Level
-* All functional requirements have a test case
-* All test cases have a unit test
-* 100% of unit test assertions pass
+* All functional requirements have a test case.
+* All test cases have a unit test.
+* 100% of unit test assertions pass.
+
 #### Master Test Level
-* All unit tests pass
-* No additional defects of the program can be found through typical user use cases
+* All unit tests pass.
+* No additional defects of the program can be found through typical user use cases.
 
 ## Test items
 Please see the high level testing [Component_Test_Plan](https://github.com/mitchellwarr/ITPR6.590_Testing_Plan/blob/master/Component_Test_Plan.md) 
 
-# ToDo
-```
 ## Features to be tested
-features from users perspective  
-links back to requirements  
-  
-5 drivers
-messages
-changing location randomly
-exiting system
-starting randomly
-```
+The requirements outline that  
+* There are to be 5 drivers being initialized and run after each other.
+* Each driver will randomly switch between different locations.
+* A driver will stop its iteration once it reaches the location "outside city".
+* A driver, after starting its iteration, will pick a random location to start from.
+* Drivers will produce messages describing thier current state, and those messages will be displayed to the user.
+
 ## Features not to be tested
 In order to fulfil the feature outlining the psuedo-random nature of the program, a random generation library needs to be used. The effectiveness of this library is not to be tested. To which, it will not be tested that each time you call the random generator you get a different and random value in return. This is a third party library and therefore, is out of scope. What will be tested is on a high level, that given a seed, the program will always produce the same result.
 
@@ -74,13 +72,13 @@ The testing team is composed of two members being Sarah Anderson, and Mitchell W
 
 ## Schedule
 The schedule will be kept up to date using [to do list](http://abstractspoon.weebly.com/) and uploaded to the [git repo](https://github.com/mitchellwarr/ITPR6.590_Testing_Plan/blob/master/SoftwareTesting.tdl). 
-Sarah and Mitch will meet once a week to disucss and implement the assignment applcaition.
+The team will meet once a week to assign future work and implement peer programming techniques. Development will be planned and assigned to each memeber, to work on during personal hours.
 
 ## Testing Tasks
 ### Test scenarios
 Test scenarios are documented on in our [Test scenarios](https://github.com/mitchellwarr/ITPR6.590_Testing_Plan/blob/master/test_case_scenrios)
 
-### Test Scrips
+### Test Scripts
 Test scripts will be inside our [driver application](https://github.com/mitchellwarr/ITPR6.590_Testing_Plan/driverApp) 
 
 ### Issue tracking
