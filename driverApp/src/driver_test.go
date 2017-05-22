@@ -4,8 +4,27 @@ import (
 	"testing"
 	"fmt"
 )
+/*Our assert library*/
+func AssertEqual(t *testing.T, message string, item1, item2 interface{} ) {
+	if item1 != item2 {
+		t.Error("FAILED:", message, "- item1:", item1, "item2:", item2)
+	} else {
+		fmt.Println("PASS:", message)
+	}
+}
 
-// 
+func AssertTrue(t *testing.T, message string, item bool ) {
+	if item {
+		fmt.Println("PASS:", message)
+	} else {
+		t.Error("FAILED:", message, "- item:", item)
+	}
+}
+
+func AssertFalse(t *testing.T, message string, item bool ) {
+	AssertTrue(t, message, !item)
+}
+
 func TestDriverInCity(t *testing.T) {
 	outsideCity := &node{id: 0}
 	mayfair := &node{id: 1}
@@ -41,29 +60,21 @@ func TestDriverInCity(t *testing.T) {
 	AssertTrue(t, "Mahora driver should be inside city", boolDriverMahora)
 }
 
-func AssertEqual(t *testing.T, message string, item1, item2 interface{} ) {
-	if item1 != item2 {
-		t.Error("FAILED:", message, "- item1:", item1, "item2:", item2)
-	} else {
-		fmt.Println("PASS:", message)
-	}
+
+func TestVisitMessage(t *testing.T){
+	// Refer to FUN-AKINA-COUNT
+	//// Driver that has visited John
+	aDriver := driver{}
+	aDriver.visitCount = 0
+	aDriver.exitCity = "nothing"
+
+	expectedMessage := "Driver 1 met with John Jamieosn 0 time(s).\n
+	That passenger missed out!"+
+	"-----"
+	actualMessage := aDriver.visitMessage()
+	AssertTrue(t, "", message, expectedMessage)
+
 }
-
-func AssertTrue(t *testing.T, message string, item bool ) {
-	if item {
-		fmt.Println("PASS:", message)
-	} else {
-		t.Error("FAILED:", message, "- item:", item)
-	}
-}
-
-func AssertFalse(t *testing.T, message string, item bool ) {
-	AssertTrue(t, message, !item)
-}
-
-// func TestVisitMessage(){
-
-// }
 
 // func TestStart(){
 

@@ -19,39 +19,40 @@ func newDriver(id int) driver {
 func (d *driver) driverInCity() bool {
 	return d.location.id != OutsideCityID
 }
-
-func (d *driver) visitMessage() string {
-	// Driver 4 has gone to Napier
-	// Driver 4 met with John Jamieson 1 time(s).
-	var message string = ""
-
+func (d *driver) visitMessageJohn() string {
 	// Refer to FUN-AKINA-COUNT
-	message += fmt.Sprintf(
+	return fmt.Sprintf(
 		"Driver %d met with John Jamieosn %v time(s).",
 		d.driverID, d.visitCount,
 	)
+}
 
-	message += "\n"
-
+func (d *driver) visitMessageCount() string {
 	// Refer to FUN-AKINA-EDGES
 	if d.visitCount > 2 {
-		message += "This driver needed lots of help!"
-		message += "\n"
+		return "This driver needed lots of help!"
 	} else if d.visitCount == 0 {
-		message += "That passenger missed out!"
-		message += "\n"
-	}	
+		return "That passenger missed out!"
+	}
+	return ""
+}
 
+func (d *driver) visitMessageExitCity() string {
 	// Refer to FUN-OTHER-CITIES
 	// Interpreted requirements, we do not display where the driver when if they did not exit via Karamu road or via Omahu Road
 	// This is not good coding convention, but, this excercise is to work with testing, not coding
-	if d.exitCity == "Napier" || d.exitCity == "Flaxmere" {
-		message += fmt.Sprintf("Driver has gone to %v", d.exitCity)
-		message += "\n"
+	if d.exitCity != "" {
+		return fmt.Sprintf("Driver has gone to %v", d.exitCity)
 	}
+}
+
+func (d *driver) visitMessage() string {
+	john := visitMessageJohn()
+	count := visitMessageCount()
+	exit := visitMessageExitCity()
 
 	// Refer to FUN-DASHES
-	message += "-----"
+	dashes := "-----"
 
 	return message
 }
