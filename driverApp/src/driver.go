@@ -47,9 +47,15 @@ func (d *driver) visitMessageExitCity() string {
 }
 
 func (d *driver) visitMessage() string {
+	newline := "\n"
 	john := visitMessageJohn()
+	if john != ""{
+		john += newline
+	}
 	count := visitMessageCount()
 	exit := visitMessageExitCity()
+
+
 
 	// Refer to FUN-DASHES
 	dashes := "-----"
