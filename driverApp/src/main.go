@@ -39,16 +39,13 @@ func main() {
 
 func getRandomGen(input string) (*rand.Rand, error) {
 	i, err := strconv.ParseInt(input, 10, 64)
-
 	var seedInt int64
 	if err == nil {
 		seedInt = int64(i)
 	} else {
 		seedInt = 0
 	}
-
 	r := rand.New(rand.NewSource(seedInt))
-
 	return r, err
 }
 
