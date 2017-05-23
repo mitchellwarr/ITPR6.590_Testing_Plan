@@ -17,7 +17,10 @@ const (
 func main() {
 	fmt.Print("Enter seed: ")
 	input := getInput()
-	randGen, _ := getRandomGen(input)
+	randGen, err := getRandomGen(input)
+	if err != nil {
+		return
+	}
 	cityNetwork := LoadNewNetwork(MapFile)
 	for i := 1; i <= DriverCount; i++ {
 		d := newDriver(i)
