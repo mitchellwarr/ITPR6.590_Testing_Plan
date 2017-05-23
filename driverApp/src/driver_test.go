@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"math"
 	"testing"
 )
 
@@ -95,9 +96,15 @@ func TestVisitMessageExitCity(t *testing.T) {
 
 // }
 
-// func TestPickNeightbour(){
+// func TestPickPath(){
 
 // }
+
+func TestNewDriver(t *testing.T) {
+	d := newDriver(0)
+
+	AssertEqual(t, "", d.driverID, 0)
+}
 
 func TestTryMeetJohn(t *testing.T) {
 	dAkina := driver{location: &node{id: AkinaCityID}, visitCount: 0}
@@ -111,5 +118,13 @@ func TestTryMeetJohn(t *testing.T) {
 }
 
 func TestCheckExit(t *testing.T) {
+	d := driver{}
 
+	AssertFalse(t, "", d.checkExit(ChanceToExit))
+	AssertFalse(t, "", d.checkExit(ChanceToExit+0.001))
+	AssertFalse(t, "", d.checkExit(1))
+	AssertFalse(t, "", d.checkExit(math.MaxFloat64))
+	AssertTrue(t, "", d.checkExit(ChanceToExit-0.001))
+	AssertTrue(t, "", d.checkExit(0))
+	AssertTrue(t, "", d.checkExit(-math.MaxFloat64))
 }
