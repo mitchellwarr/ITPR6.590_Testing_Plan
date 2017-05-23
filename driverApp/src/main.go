@@ -7,11 +7,17 @@ import (
 )
 
 const (
-	DriverCount   = 5
-	OutsideCityID = 0
-	AkinaCityID   = 2
-	MapFile       = "./map.json"
-	ChanceToExit  = 0.2 // 1 divided by 5
+	DriverCount               = 5
+	OutsideCityID             = 0
+	AkinaCityID               = 2
+	MapFile                   = "./map.json"
+	ChanceToExit              = 0.2 // 1 divided by 5
+	MessageDriverMetWithJJ    = "Driver %d met with John Jamieosn %v time(s)."
+	MessageDriverNeedsHelp    = "This driver needed lots of help!"
+	MessagePassengerMissedOut = "That passenger missed out!"
+	MessageDriverLeftToCity   = "Driver has gone to %v"
+	MessageDriverStarting     = "Driver %d starting at %v."
+	MessageDriverHeading      = "Driver %d heading from %v to %v."
 )
 
 func main() {

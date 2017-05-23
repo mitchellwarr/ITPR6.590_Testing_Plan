@@ -23,17 +23,16 @@ func (d *driver) driverInCity() bool {
 func (d *driver) visitMessageJohn() string {
 	// Refer to FUN-AKINA-COUNT
 	return fmt.Sprintf(
-		"Driver %d met with John Jamieosn %v time(s).",
-		d.driverID, d.visitCount,
+		MessageDriverMetWithJJ, d.driverID, d.visitCount,
 	)
 }
 
 func (d *driver) visitMessageCount() string {
 	// Refer to FUN-AKINA-EDGES
 	if d.visitCount > 2 {
-		return "This driver needed lots of help!"
+		return MessageDriverNeedsHelp
 	} else if d.visitCount == 0 {
-		return "That passenger missed out!"
+		return MessagePassengerMissedOut
 	}
 	return ""
 }
@@ -43,22 +42,21 @@ func (d *driver) visitMessageExitCity() string {
 	// Interpreted requirements, we do not display where the driver when if they did not exit via Karamu road or via Omahu Road
 	// This is not good coding convention, but, this excercise is to work with testing, not coding
 	if d.exitCity != "" {
-		return fmt.Sprintf("Driver has gone to %v", d.exitCity)
+		return fmt.Sprintf(MessageDriverLeftToCity, d.exitCity)
 	}
 	return ""
 }
 
 func (d *driver) visitMessage() string {
-	newline := "\n"
 	john := d.visitMessageJohn()
-	if john != "" {
-		john += newline
-	}
 	count := d.visitMessageCount()
-	if count != "" {
-		john += newline
-	}
 	exit := d.visitMessageExitCity()
+	if count != "" {
+		john += "\n"
+	}
+	if exit != "" {
+		count += "\n"
+	}
 	return john + count + exit
 }
 
@@ -73,7 +71,7 @@ func (d *driver) start(r *rand.Rand, n Network) string {
 	d.location = n.locations[index]
 	d.tryMeetJohn()
 	startMessage := fmt.Sprintf(
-		"Driver %d starting at %v.",
+		MessageDriverStarting,
 		d.driverID, n.locations[index].name,
 	)
 	return startMessage
@@ -92,7 +90,7 @@ func (d *driver) move(r *rand.Rand) string {
 	d.tryMeetJohn()
 
 	return fmt.Sprintf(
-		"Driver %d heading from %v to %v.",
+		MessageDriverHeading,
 		d.driverID, from, d.location.name,
 	)
 }

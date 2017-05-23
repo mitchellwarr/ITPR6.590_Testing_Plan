@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"testing"
 )
 
@@ -39,20 +40,52 @@ func TestDriverInCity(t *testing.T) {
 	AssertTrue(t, "Mahora driver should be inside city", boolDriverMahora)
 }
 
-// func TestVisitMessage(t *testing.T){
-// 	// Refer to FUN-AKINA-COUNT
-// 	//// Driver that has visited John
-// 	aDriver := driver{}
+// func TestVisitMessage(t *testing.T) {
+// 	aDriver := driver{driverID: 1}
 // 	aDriver.visitCount = 0
-// 	aDriver.exitCity = "nothing"
+// 	aDriver.exitCity = ""
 
-// 	expectedMessage := "Driver 1 met with John Jamieosn 0 time(s).\n
-// 	That passenger missed out!"+
-// 	"-----"
+// 	expectedMessage := fmt.Sprintf(MessageDriverMetWithJJ, 1, 0) + "\n" + MessagePassengerMissedOut
 // 	actualMessage := aDriver.visitMessage()
-// 	AssertTrue(t, "", message, expectedMessage)
-
+// 	AssertEqual(t, "Driver should join the correct messages", actualMessage, expectedMessage)
 // }
+
+func TestVisitMessageJohn(t *testing.T) {
+	driver0 := driver{driverID: 1}
+	driver0.visitCount = 0
+	driver1 := driver{driverID: 1}
+	driver1.visitCount = 3
+	driver2 := driver{driverID: 1}
+	driver2.visitCount = -1
+
+	AssertEqual(t, "Driver shows that it did not meet John", driver0.visitMessageJohn(), fmt.Sprintf(MessageDriverMetWithJJ, 1, 0))
+	AssertEqual(t, "Driver shows that it meet John", driver1.visitMessageJohn(), fmt.Sprintf(MessageDriverMetWithJJ, 1, 3))
+	AssertEqual(t, "Driver shows that it John less than zero", driver2.visitMessageJohn(), fmt.Sprintf(MessageDriverMetWithJJ, 1, -1))
+}
+
+func TestVisitMessageCount(t *testing.T) {
+	driver0 := driver{}
+	driver0.visitCount = 0
+	driver1 := driver{}
+	driver1.visitCount = -1
+	driver2 := driver{}
+	driver2.visitCount = 2
+	driver3 := driver{}
+	driver3.visitCount = 3
+
+	AssertEqual(t, "Driver should show no vists", driver0.visitMessageCount(), MessagePassengerMissedOut)
+	AssertEqual(t, "Driver with negative vists should show nothing", driver1.visitMessageCount(), "")
+	AssertEqual(t, "Driver with few visists should show nothing", driver2.visitMessageCount(), "")
+	AssertEqual(t, "Driver with many visits should need help", driver3.visitMessageCount(), MessageDriverNeedsHelp)
+}
+
+func TestVisitMessageExitCity(t *testing.T) {
+	dNapier := driver{exitCity: "Napier"}
+	dNothing := driver{exitCity: ""}
+
+	AssertEqual(t, "Driver should display exiting Napier", dNapier.visitMessageExitCity(), fmt.Sprintf(MessageDriverLeftToCity, "Napier"))
+	AssertEqual(t, "Driver should display no exit", dNothing.visitMessageExitCity(), "")
+}
 
 // func TestStart(){
 
@@ -66,10 +99,17 @@ func TestDriverInCity(t *testing.T) {
 
 // }
 
-// func TestTryMeetJohn(){
+func TestTryMeetJohn(t *testing.T) {
+	dAkina := driver{location: &node{id: AkinaCityID}, visitCount: 0}
+	dNotAkina := driver{location: &node{id: AkinaCityID + 1}, visitCount: 0}
 
-// }
+	dAkina.tryMeetJohn()
+	dNotAkina.tryMeetJohn()
 
-// func TestChechExit(){
+	AssertEqual(t, "Driver in akina should have met John", dAkina.visitCount, 1)
+	AssertEqual(t, "Driver outside akina should not have met John", dNotAkina.visitCount, 0)
+}
 
-// }
+func TestCheckExit(t *testing.T) {
+
+}
