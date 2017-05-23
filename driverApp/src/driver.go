@@ -86,10 +86,7 @@ func (d *driver) move(r *rand.Rand) string {
 
 	d.tryMeetJohn()
 
-	return fmt.Sprintf(
-		MessageDriverHeading,
-		d.driverID, from, d.location.name,
-	)
+	return fmt.Sprintf(MessageDriverHeading, d.driverID, from, d.location.name)
 }
 
 func (d *driver) pickPath(r float64) path {
