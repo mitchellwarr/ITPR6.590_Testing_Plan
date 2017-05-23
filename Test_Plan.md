@@ -95,7 +95,3 @@ The application is developed in Go. Set up on the envrioment is documented on [G
   * Keep the repositiory up-to-date with good mile stones, so a roll back can be done.
 * The development becomes behind schedule
   * Maintain communication between team members (through telegram and github)
-
-
-
-
