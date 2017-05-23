@@ -52,7 +52,7 @@ type pathJSON struct {
 }
 
 func LoadNewNetwork(filePath string) Network {
-	file := getFileByte(filePath)
+	file, _ := getFileByte(filePath)
 	mapjson := loadMapJSON(file)
 
 	newNetwork := Network{
@@ -86,10 +86,10 @@ func loadMapJSON(jsonInput []byte) mapJSON {
 	return mapjson
 }
 
-func getFileByte(filePath string) []byte {
+func getFileByte(filePath string) ([]byte, error) {
 	file, err := ioutil.ReadFile(filePath)
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
-	return file
+	return file, nil
 }

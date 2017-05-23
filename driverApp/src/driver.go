@@ -19,6 +19,7 @@ func newDriver(id int) driver {
 func (d *driver) driverInCity() bool {
 	return d.location.id != OutsideCityID
 }
+
 func (d *driver) visitMessageJohn() string {
 	// Refer to FUN-AKINA-COUNT
 	return fmt.Sprintf(
@@ -44,23 +45,21 @@ func (d *driver) visitMessageExitCity() string {
 	if d.exitCity != "" {
 		return fmt.Sprintf("Driver has gone to %v", d.exitCity)
 	}
+	return ""
 }
 
 func (d *driver) visitMessage() string {
 	newline := "\n"
-	john := visitMessageJohn()
-	if john != ""{
+	john := d.visitMessageJohn()
+	if john != "" {
 		john += newline
 	}
-	count := visitMessageCount()
-	exit := visitMessageExitCity()
-
-
-
-	// Refer to FUN-DASHES
-	dashes := "-----"
-
-	return message
+	count := d.visitMessageCount()
+	if count != "" {
+		john += newline
+	}
+	exit := d.visitMessageExitCity()
+	return john + count + exit
 }
 
 // This method requires a rand, and not a float, because we need to continue to randomly choose a start position until they are inside the city :)
@@ -81,18 +80,17 @@ func (d *driver) start(r *rand.Rand, n Network) string {
 }
 
 func (d *driver) move(r *rand.Rand) string {
-	from := d.location.name 
+	from := d.location.name
 	path := d.pickPath(r.Float64())
 	d.location, _ = path.getNeighbour(d.location)
-	
-	
+
 	if d.checkExit(r.Float64()) {
 		d.location = path.exit
 		d.exitCity = path.city
 	}
 
 	d.tryMeetJohn()
-	
+
 	return fmt.Sprintf(
 		"Driver %d heading from %v to %v.",
 		d.driverID, from, d.location.name,

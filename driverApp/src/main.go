@@ -24,14 +24,16 @@ func main() {
 	cityNetwork := LoadNewNetwork(MapFile)
 	for i := 1; i <= DriverCount; i++ {
 		d := newDriver(i)
-		
+
 		fmt.Println(d.start(randGen, cityNetwork))
 		// Repeat until not in the city
-		for d.driverInCity(){
+		for d.driverInCity() {
 			fmt.Println(d.move(randGen))
 		}
 
 		fmt.Println(d.visitMessage())
+		// Refer to FUN-DASHES
+		fmt.Println("-----")
 	}
 }
 
@@ -41,7 +43,7 @@ func getRandomGen(input string) (*rand.Rand, error) {
 	var seedInt int64
 	if err == nil {
 		seedInt = int64(i)
-	} else{
+	} else {
 		seedInt = 0
 	}
 
@@ -56,7 +58,7 @@ func getInput() string {
 		_, err := fmt.Scanf("%v", &input)
 		if err == nil {
 			break
-		}else{
+		} else {
 			fmt.Print(err)
 		}
 	}
