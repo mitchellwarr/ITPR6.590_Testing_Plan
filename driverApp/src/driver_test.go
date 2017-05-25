@@ -41,15 +41,15 @@ func TestDriverInCity(t *testing.T) {
 	AssertTrue(t, "Mahora driver should be inside city", boolDriverMahora)
 }
 
-// func TestVisitMessage(t *testing.T) {
-// 	aDriver := driver{driverID: 1}
-// 	aDriver.visitCount = 0
-// 	aDriver.exitCity = ""
+func TestVisitMessage(t *testing.T) {
+	aDriver := driver{driverID: 1}
+	aDriver.visitCount = 0
+	aDriver.exitCity = ""
 
-// 	expectedMessage := fmt.Sprintf(MessageDriverMetWithJJ, 1, 0) + "\n" + MessagePassengerMissedOut
-// 	actualMessage := aDriver.visitMessage()
-// 	AssertEqual(t, "Driver should join the correct messages", actualMessage, expectedMessage)
-// }
+	expectedMessage := fmt.Sprintf(MessageDriverMetWithJJ, 1, 0) + "\n" + MessagePassengerMissedOut
+	actualMessage := aDriver.visitMessage()
+	AssertEqual(t, "Driver should join the correct messages", actualMessage, expectedMessage)
+}
 
 func TestVisitMessageJohn(t *testing.T) {
 	driver0 := driver{driverID: 1}
@@ -101,9 +101,11 @@ func TestVisitMessageExitCity(t *testing.T) {
 // }
 
 func TestNewDriver(t *testing.T) {
-	d := newDriver(0)
+	d0 := newDriver(0)
+	d4 := newDriver(4)
 
-	AssertEqual(t, "", d.driverID, 0)
+	AssertEqual(t, "Driver constructor should update driver ID - 0", d0.driverID, 0)
+	AssertEqual(t, "Driver constructor should update driver ID - 4", d4.driverID, 4)
 }
 
 func TestTryMeetJohn(t *testing.T) {
@@ -120,11 +122,11 @@ func TestTryMeetJohn(t *testing.T) {
 func TestCheckExit(t *testing.T) {
 	d := driver{}
 
-	AssertFalse(t, "", d.checkExit(ChanceToExit))
-	AssertFalse(t, "", d.checkExit(ChanceToExit+0.001))
-	AssertFalse(t, "", d.checkExit(1))
-	AssertFalse(t, "", d.checkExit(math.MaxFloat64))
-	AssertTrue(t, "", d.checkExit(ChanceToExit-0.001))
-	AssertTrue(t, "", d.checkExit(0))
-	AssertTrue(t, "", d.checkExit(-math.MaxFloat64))
+	AssertFalse(t, "Driver will not exit when number is equal to our constant 'ChanceToExit'", d.checkExit(ChanceToExit))
+	AssertFalse(t, "Driver will not exit when number is boarderline more than our constant 'ChanceToExit'", d.checkExit(ChanceToExit+0.001))
+	AssertFalse(t, "Driver will not exit when number is 1", d.checkExit(1))
+	AssertFalse(t, "Driver will not exit when number is postivie max float", d.checkExit(math.MaxFloat64))
+	AssertTrue(t, "Driver will exit when number is boarderline under the chance ", d.checkExit(ChanceToExit-0.001))
+	AssertTrue(t, "Driver will exit when number is 0", d.checkExit(0))
+	AssertTrue(t, "Driver will exit when number is negative max float", d.checkExit(-math.MaxFloat64))
 }
