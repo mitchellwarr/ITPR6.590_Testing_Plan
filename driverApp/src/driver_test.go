@@ -88,9 +88,51 @@ func TestVisitMessageExitCity(t *testing.T) {
 	AssertEqual(t, "Driver should display no exit", dNothing.visitMessageExitCity(), "")
 }
 
-// func TestStart(){
+func TestStart(t *testing.T) {
+	// REM SARAH: Having trouble testing that they will never start ouitside city
+	// Driver should not start outside the city
+	testNetwork := LoadNewNetwork(MapFile)
+	randGen1, _ := getRandomGen("1")
+	d1 := driver{}
+	d1.start(randGen1, testNetwork)
 
-// }
+	randGen2, _ := getRandomGen("2")
+	d2 := driver{}
+	d2.start(randGen2, testNetwork)
+
+	AssertNotEqual(t, "Driver doesn't start inside city", d1.location.id, OutsideCityID)
+	AssertNotEqual(t, "Driver doesn't start inside city", d2.location.id, OutsideCityID)
+
+	// The start method checks if you have met John even when starting at a position
+	d3 := driver{}
+
+	d3.start(randGen1, testNetwork)
+
+	AssertEqual(t, "Driver starting at Akina, will meet john", d3.visitCount, 1)
+
+	// Starting Visit message
+	d4 := driver{}
+
+	d4Message := d4.start(randGen1, testNetwork)
+	expectedMessage := "This is it"
+	AssertEqual(t, "", d4Message, expectedMessage)
+
+}
+
+/*
+func (d *driver) start(r *rand.Rand, n Network) string {
+	// Initalise the location and make sure driver starts in the city
+	index := OutsideCityID
+	for index == OutsideCityID {
+		index = int(r.Float64() * float64(len(n.locations)))
+	}
+
+	d.location = n.locations[index]
+	d.tryMeetJohn()
+	startMessage := fmt.Sprintf(MessageDriverStarting, d.driverID, n.locations[index].name)
+	return startMessage
+}
+*/
 
 // func TestMove(){
 
