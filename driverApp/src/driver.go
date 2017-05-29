@@ -61,16 +61,18 @@ func (d *driver) visitMessage() string {
 }
 
 // This method requires a rand, and not a float, because we need to continue to randomly choose a start position until they are inside the city :)
-func (d *driver) start(r *rand.Rand, n Network) string {
-	// Initalise the location and make sure driver starts in the city
-	index := OutsideCityID
-	for index == OutsideCityID {
-		index = int(r.Float64() * float64(len(n.locations)))
+func (d *driver) start(r float64, n Network) string {
+	if (r < 0) || (r >= 1) {
+		// This prevents the method from being used incorrectly.
+		// Will force the starting city to be location 1 of the array
+		r = 0
 	}
 
+	validLocationCount := float64(len(n.locations)) - 1
+	index := int((validLocationCount * r) + 1)
 	d.location = n.locations[index]
 	d.tryMeetJohn()
-	startMessage := fmt.Sprintf(MessageDriverStarting, d.driverID, n.locations[index].name)
+	startMessage := fmt.Sprintf(MessageDriverStarting, d.driverID, d.location.name)
 	return startMessage
 }
 

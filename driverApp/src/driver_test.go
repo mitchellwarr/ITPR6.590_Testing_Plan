@@ -89,50 +89,55 @@ func TestVisitMessageExitCity(t *testing.T) {
 }
 
 func TestStart(t *testing.T) {
-	// REM SARAH: Having trouble testing that they will never start ouitside city
 	// Driver should not start outside the city
+	// ID 1 0 - 0.2499,
+	// ID 2 0.2500 - 0.4999
+	// ID 3 0.5000 - 0.7499
+	// ID 4 0.7500 - 0.9999
 	testNetwork := LoadNewNetwork(MapFile)
-	randGen1, _ := getRandomGen("1")
+
+	// Invalid inputs:
+	// Negative Number
 	d1 := driver{}
-	d1.start(randGen1, testNetwork)
+	d1.start(-0.5, testNetwork)
 
-	randGen2, _ := getRandomGen("2")
+	// Number above 1
 	d2 := driver{}
-	d2.start(randGen2, testNetwork)
+	d2.start(1, testNetwork)
+	AssertEqual(t, "Driver is forced to location 1, when invalid input: -1", d1.location.id, 1)
+	AssertEqual(t, "Driver is forced to location 1, when invalid input: 1", d2.location.id, 1)
 
-	AssertNotEqual(t, "Driver doesn't start inside city", d1.location.id, OutsideCityID)
-	AssertNotEqual(t, "Driver doesn't start inside city", d2.location.id, OutsideCityID)
-
-	// The start method checks if you have met John even when starting at a position
+	// Refer to FUN-AKINA-COUNT: The start method checks if you have met John even when starting at a Akina
 	d3 := driver{}
-
-	d3.start(randGen1, testNetwork)
+	d3.start(0.3, testNetwork) // 0.3 forces starting at Akina
 
 	AssertEqual(t, "Driver starting at Akina, will meet john", d3.visitCount, 1)
 
 	// Starting Visit message
 	d4 := driver{}
+	d4Message := d4.start(0, testNetwork)
+	expectedMayfair := fmt.Sprintf(MessageDriverStarting, 0, "Mayfair")
+	AssertEqual(t, "Driver should visit Mayfair", d4Message, expectedMayfair)
 
-	d4Message := d4.start(randGen1, testNetwork)
-	expectedMessage := "This is it"
-	AssertEqual(t, "", d4Message, expectedMessage)
+	d4b := driver{}
+	d4bMessage := d4b.start(0.24, testNetwork)
+	AssertEqual(t, "Driver should visit Mayfair", d4bMessage, expectedMayfair)
 
+	d5 := driver{}
+	d5Message := d5.start(0.25, testNetwork)
+	exepctedAkina := fmt.Sprintf(MessageDriverStarting, 0, "Akina")
+	AssertEqual(t, "Driver should visit Akina", d5Message, exepctedAkina)
+
+	d6 := driver{}
+	d6Message := d6.start(0.5, testNetwork)
+	expectedStortfordLodge := fmt.Sprintf(MessageDriverStarting, 0, "Stortford Lodge")
+	AssertEqual(t, "Driver should visit Stortford Lodge", d6Message, expectedStortfordLodge)
+
+	d7 := driver{}
+	d7Message := d7.start(0.75, testNetwork)
+	expectedMahora := fmt.Sprintf(MessageDriverStarting, 0, "Mahora")
+	AssertEqual(t, "Driver should visit Mahora", d7Message, expectedMahora)
 }
-
-/*
-func (d *driver) start(r *rand.Rand, n Network) string {
-	// Initalise the location and make sure driver starts in the city
-	index := OutsideCityID
-	for index == OutsideCityID {
-		index = int(r.Float64() * float64(len(n.locations)))
-	}
-
-	d.location = n.locations[index]
-	d.tryMeetJohn()
-	startMessage := fmt.Sprintf(MessageDriverStarting, d.driverID, n.locations[index].name)
-	return startMessage
-}
-*/
 
 // func TestMove(){
 
