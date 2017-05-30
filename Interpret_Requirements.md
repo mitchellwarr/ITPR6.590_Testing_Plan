@@ -18,6 +18,7 @@ This application is console based. There is no specifications on how the driver 
 ## Location network
 In order to replicate the city network of paths and locations, a graph routing system will be used. this means that several nodes will be used to stand for each location. In the code paths will be used to describe how all the nodes interconnect. Each node will have an id that correlates to a location on the map. In this way we can work out which node is what location, and test that a driver is in a certain location.  
 The driver will use the nodes paths to work out which neighbour to move to.  
+Each street will be a connection between two locations, after picking the neighbour, the driver will randomly pick whether it should exit.
 
 ## Exit locations
 Upon exiting through Karamu road then the program shall display that the driver has gone to Napier, if the driver exits by Omahu Road, then the program shall display that the driver has gone to Flaxmere. If the driver exits through any other road then we dont display any message.
