@@ -4,7 +4,8 @@
 had to test to find the best chance of exit
 
 ### Difficulties
-Rand gen stuff
+The random generator posed an issue with test setup. It wasn't difficult to set up a new generator with a set seed, but knowing that a generator with a seed of 5 will return after running it through the method, meant running the method once with it and taking its result. This meant it was assumed the method was working in the firs tplacce in order to use the ouput as the base line. The only thing this would protect from is if either the workings of the method changed, or if the random generator code changed.  
+
 Abstracting
 
 ### What could have been done better
