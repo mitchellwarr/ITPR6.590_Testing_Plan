@@ -139,9 +139,25 @@ func TestStart(t *testing.T) {
 	AssertEqual(t, "Driver should visit Mahora", d7Message, expectedMahora)
 }
 
-// func TestMove(){
+func TestMove(t *testing.T){/*
+	// Move location
+	driver := driver{}
+	orginalLocName := "Test"//driver.location.name
+	driver.move(0.5)
 
-// }
+
+
+	// Try and meet John
+
+	// Drive message
+	driver := driver{}
+	driverMessage := driver1.move(0.5)
+	expectedDriverMessage := ""
+	//AssertTrue(t, "Driver message after moving", driverMessage, expectedDriverMessage)
+
+	// Can't test*/
+}
+
 
 // func TestPickPath(){
 
