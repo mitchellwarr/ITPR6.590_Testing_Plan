@@ -19,7 +19,11 @@ The random generator can be set by an input
   
 #### ITPR6.590A2-SYS002
 The system should iterate through 5 drivers  
-  
+```
+  Execute: call `main` method,
+  Message:  
+  Assert:   
+```
 #### ITPR6.590A2-SYS003
 The system should print on screen appropriate messages  
 
@@ -60,17 +64,19 @@ The system should print on screen appropriate messages
 ## Driver
 #### ITPR6.590A2-DRV001 
 Drivers can move to another node given an input  
-
+```
   Execute: call `move` method,
   Message:  
   Assert:   
+```  
   
 #### ITPR6.590A2-DRV002 
 Drivers will end their driving session only if they’re on an exit  
+```
   Execute: call `move` method,
   Message:  
   Assert:   
-
+```
 #### ITPR6.590A2-DRV003 
 Test the DriverInCity method. When a driver has exited the city, their location will be "outside city"  
   ###### For each location: Example written for `Outside City`
