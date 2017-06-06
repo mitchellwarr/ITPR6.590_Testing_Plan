@@ -40,16 +40,16 @@ func TestDriverInCity(t *testing.T) {
 	AssertTrue(t, "StortfordLodge driver should be inside city", boolDriverStortfordLodge)
 	AssertTrue(t, "Mahora driver should be inside city", boolDriverMahora)
 }
+/*
+func TestVisitMessage(t *testing.T) {
+	aDriver := driver{driverID: 1}
+	aDriver.visitCount = 0
+	aDriver.exitCity = ""
 
-// func TestVisitMessage(t *testing.T) {
-// 	aDriver := driver{driverID: 1}
-// 	aDriver.visitCount = 0
-// 	aDriver.exitCity = ""
-
-// 	expectedMessage := fmt.Sprintf(MessageDriverMetWithJJ, 1, 0) + "\n" + MessagePassengerMissedOut
-// 	actualMessage := aDriver.visitMessage()
-// 	AssertEqual(t, "Driver should join the correct messages", actualMessage, expectedMessage)
-// }
+	expectedMessage := fmt.Sprintf(MessageDriverMetWithJJ, 1, 0) + "\n" + MessagePassengerMissedOut
+	actualMessage := aDriver.visitMessage()
+	AssertEqual(t, "Driver should join the correct messages", actualMessage, expectedMessage)
+}*/
 
 func TestVisitMessageJohn(t *testing.T) {
 	driver0 := driver{driverID: 1}
