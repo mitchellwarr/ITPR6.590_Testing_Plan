@@ -2,7 +2,7 @@
 
 ## Map
 Figure one shows an interpretation of the design of the map. 
-![Map of city](https://github.com/mitchellwarr/ITPR6.590_Testing_Plan/blob/master/20170406_151857%5B1%5D.jpg)
+![Map of city](map.jpg)
 Figure One
 
 The driver will decide where to begin in the map using our random seed.
