@@ -88,9 +88,56 @@ func TestVisitMessageExitCity(t *testing.T) {
 	AssertEqual(t, "Driver should display no exit", dNothing.visitMessageExitCity(), "")
 }
 
-// func TestStart(){
+func TestStart(t *testing.T) {
+	// Driver should not start outside the city
+	// ID 1 0 - 0.2499,
+	// ID 2 0.2500 - 0.4999
+	// ID 3 0.5000 - 0.7499
+	// ID 4 0.7500 - 0.9999
+	testNetwork := LoadNewNetwork(MapFile)
 
-// }
+	// Invalid inputs:
+	// Negative Number
+	d1 := driver{}
+	d1.start(-0.5, testNetwork)
+
+	// Number above 1
+	d2 := driver{}
+	d2.start(1, testNetwork)
+	AssertEqual(t, "Driver is forced to location 1, when invalid input: -1", d1.location.id, 1)
+	AssertEqual(t, "Driver is forced to location 1, when invalid input: 1", d2.location.id, 1)
+
+	// Refer to FUN-AKINA-COUNT: The start method checks if you have met John even when starting at a Akina
+	d3 := driver{}
+	d3.start(0.3, testNetwork) // 0.3 forces starting at Akina
+
+	AssertEqual(t, "Driver starting at Akina, will meet john", d3.visitCount, 1)
+
+	// Starting Visit message
+	d4 := driver{}
+	d4Message := d4.start(0, testNetwork)
+	expectedMayfair := fmt.Sprintf(MessageDriverStarting, 0, "Mayfair")
+	AssertEqual(t, "Driver should visit Mayfair", d4Message, expectedMayfair)
+
+	d4b := driver{}
+	d4bMessage := d4b.start(0.24, testNetwork)
+	AssertEqual(t, "Driver should visit Mayfair", d4bMessage, expectedMayfair)
+
+	d5 := driver{}
+	d5Message := d5.start(0.25, testNetwork)
+	exepctedAkina := fmt.Sprintf(MessageDriverStarting, 0, "Akina")
+	AssertEqual(t, "Driver should visit Akina", d5Message, exepctedAkina)
+
+	d6 := driver{}
+	d6Message := d6.start(0.5, testNetwork)
+	expectedStortfordLodge := fmt.Sprintf(MessageDriverStarting, 0, "Stortford Lodge")
+	AssertEqual(t, "Driver should visit Stortford Lodge", d6Message, expectedStortfordLodge)
+
+	d7 := driver{}
+	d7Message := d7.start(0.75, testNetwork)
+	expectedMahora := fmt.Sprintf(MessageDriverStarting, 0, "Mahora")
+	AssertEqual(t, "Driver should visit Mahora", d7Message, expectedMahora)
+}
 
 // func TestMove(){
 
@@ -101,9 +148,11 @@ func TestVisitMessageExitCity(t *testing.T) {
 // }
 
 func TestNewDriver(t *testing.T) {
-	d := newDriver(0)
+	d0 := newDriver(0)
+	d4 := newDriver(4)
 
-	AssertEqual(t, "", d.driverID, 0)
+	AssertEqual(t, "Driver constructor should update driver ID - 0", d0.driverID, 0)
+	AssertEqual(t, "Driver constructor should update driver ID - 4", d4.driverID, 4)
 }
 
 func TestTryMeetJohn(t *testing.T) {
@@ -120,11 +169,11 @@ func TestTryMeetJohn(t *testing.T) {
 func TestCheckExit(t *testing.T) {
 	d := driver{}
 
-	AssertFalse(t, "", d.checkExit(ChanceToExit))
-	AssertFalse(t, "", d.checkExit(ChanceToExit+0.001))
-	AssertFalse(t, "", d.checkExit(1))
-	AssertFalse(t, "", d.checkExit(math.MaxFloat64))
-	AssertTrue(t, "", d.checkExit(ChanceToExit-0.001))
-	AssertTrue(t, "", d.checkExit(0))
-	AssertTrue(t, "", d.checkExit(-math.MaxFloat64))
+	AssertFalse(t, "Driver will not exit when number is equal to our constant 'ChanceToExit'", d.checkExit(ChanceToExit))
+	AssertFalse(t, "Driver will not exit when number is boarderline more than our constant 'ChanceToExit'", d.checkExit(ChanceToExit+0.001))
+	AssertFalse(t, "Driver will not exit when number is 1", d.checkExit(1))
+	AssertFalse(t, "Driver will not exit when number is postivie max float", d.checkExit(math.MaxFloat64))
+	AssertTrue(t, "Driver will exit when number is boarderline under the chance ", d.checkExit(ChanceToExit-0.001))
+	AssertTrue(t, "Driver will exit when number is 0", d.checkExit(0))
+	AssertTrue(t, "Driver will exit when number is negative max float", d.checkExit(-math.MaxFloat64))
 }

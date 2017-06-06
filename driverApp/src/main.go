@@ -31,7 +31,7 @@ func main() {
 	for i := 1; i <= DriverCount; i++ {
 		d := newDriver(i)
 
-		fmt.Println(d.start(randGen, cityNetwork))
+		fmt.Println(d.start(randGen.Float64(), cityNetwork))
 		// Repeat until not in the city
 		for d.driverInCity() {
 			fmt.Println(d.move(randGen))
