@@ -57,20 +57,24 @@ The system should print on screen appropriate messages
   Message:  OutsideCity driver should not be inside city  
   Assert:   Method returns false  
 
-```  TestStart
-```
 ## Driver
 #### ITPR6.590A2-DRV001 
 Drivers can move to another node given an input  
 
+  Execute: call `move` method,
+  Message:  
+  Assert:   
+  
 #### ITPR6.590A2-DRV002 
 Drivers will end their driving session only if they’re on an exit  
+  Execute: call `move` method,
+  Message:  
+  Assert:   
 
 #### ITPR6.590A2-DRV003 
-Test the DriverInCity method. When a driver has exited the city, their location will be "outside city"
-  Preconditions: Create 5 drivers, and assign all to a different location
-
+Test the DriverInCity method. When a driver has exited the city, their location will be "outside city"  
   ###### For each location: Example written for `Outside City`
+  Preconditions: Create 5 drivers, and assign all to a different location  
 
   Execute:  call `driverInCity` method, with a location of `Outside City`  
   Message:  OutsideCity driver should not be inside city  
@@ -79,12 +83,47 @@ Test the DriverInCity method. When a driver has exited the city, their location 
 #### ITPR6.590A2-DRV004
 Drivers can start at a set location
 
+  Execute:  call `Start` method, with a a seed of -1  
+  Message:  Driver is forced to location 1, when invalid input: -1  
+  Assert:   Location id is 1  
+   
+  Execute:  call `Start` method, with a a seed of 1  
+  Message:  Driver is forced to location 1, when valid input: 1  
+  Assert:   Location id is 1   
+
+
 ### LOC - Locations
 __ITPR6.590A2-LOC001__  
 Node map should be loadable
 
+Execute:  call `getFileByte` method, with an invalid file  
+Message: Non existant file should return an err   
+Assert:  The `error` returned from the `getFileByte()` method is not `null` 
+
+Execute:  call `getFileByte` method, with an empty file  
+Message: File should be returned as bytes  
+Assert: The `bytes` returned from the `getFileByte()` method is not `null` 
+
 __ITPR6.590A2-LOC002__  
 Node map should be set up with four city locations    
 
+Execute:  call `getNeighbour` method, with an a range of nodes
+Message: Node01 should be neighbour to Node02  
+Assert: The node returned from the `getNeighbour()` method for the Node02 is Node01  
+
+Message: Node02 should be neighbour to Node01  
+Assert: The node returned from the `getNeighbour()` method for the Node02 is Node02 
+
+Message: Node03 should be neighbour to none01  
+Assert: The `error` returned from the `getNeighbour()` method is not `null`  
+
 __ITPR6.590A2-LOC003__  
 Node map should be set up with four exit locations  
+
+Execute:  call `LoadNewNetwork` method, with an invalid file  
+Message: Test Network should not be empty     
+Assert: Number of locations of network is no 0
+
+Execute:  call `LoadNewNetwork` method, with an empty file  
+Message: Empty file should return an empty network  
+Assert: Number of locations of network is 0
