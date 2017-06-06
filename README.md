@@ -1,6 +1,7 @@
-"# ITPR6.590_Testing_Plan"
+# ITPR6.590_Testing_Plan
 
-
+Work produced by Mitchel Warr and Sarah Anderson for the EIT's Software Testing. 
+Feb 2017 - June 2017. 
 
 ## CitySim2017 Requirements Specification
 
