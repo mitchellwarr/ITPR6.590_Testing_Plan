@@ -1,11 +1,14 @@
-# Test Report
+# Test Report: Test Findings
 
-### Test findings – Discoveries
+### Testing Evidence
+Please see below links for testing 
+![Test Results](test results.PNG)
+
+### Discoveries
 One of our interpreted requirements was to have the drivers have a change to exit of about 20%. This meant that the program would have a chance to showcase some of the features such as "Visiting john" and displaying varying messages. These features initially would not have been very visible as the drivers would have exited about 50% of the time.
 
-### Difficulties
+### Test Results
 Throughout the testing phase of the development, the code implementation was redesigned.  
-
 In the code [issues](https://github.com/mitchellwarr/ITPR6.590_Testing_Plan/issues?utf8=%E2%9C%93&q=) section of this repository, the difficulties were documented.  
 
 The random generator posed an issue with test setup. It wasn't difficult to set up a new generator with a set seed, but knowing that a generator with a seed of 5 will return after running it through the method, meant running the method once with it and taking its result. This meant it was assumed the method was working in the first place in order to use the output as the base line. The only thing this would protect from is if either the workings of the method changed, or if the random generator code changed.  
