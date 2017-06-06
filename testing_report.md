@@ -6,7 +6,7 @@ One of our interpreted requirements was to have the drivers have a change to exi
 ### Difficulties
 Throughout the testing phase of the development, the code implementation was redesigned.  
 
-In the code [issues] (https://github.com/mitchellwarr/ITPR6.590_Testing_Plan/issues?utf8=%E2%9C%93&q=) section of this repository, the difficulties were documented.  
+In the code [issues](https://github.com/mitchellwarr/ITPR6.590_Testing_Plan/issues?utf8=%E2%9C%93&q=) section of this repository, the difficulties were documented.  
 
 The random generator posed an issue with test setup. It wasn't difficult to set up a new generator with a set seed, but knowing that a generator with a seed of 5 will return after running it through the method, meant running the method once with it and taking its result. This meant it was assumed the method was working in the first place in order to use the output as the base line. The only thing this would protect from is if either the workings of the method changed, or if the random generator code changed.  
 
