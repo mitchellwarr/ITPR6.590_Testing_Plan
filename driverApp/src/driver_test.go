@@ -34,22 +34,13 @@ func TestDriverInCity(t *testing.T) {
 	boolDriverStortfordLodge := driverStortfordLodge.driverInCity()
 	boolDriverMahora := driverMahora.driverInCity()
 
+	// ITPR6.590A2-DRV003 
 	AssertFalse(t, "OutsideCity driver should not be inside city", boolDriverOutsideCity)
 	AssertTrue(t, "Mayfair driver should be inside city", boolDriverMayfair)
 	AssertTrue(t, "Akina driver should be inside city", boolDriverAkina)
 	AssertTrue(t, "StortfordLodge driver should be inside city", boolDriverStortfordLodge)
 	AssertTrue(t, "Mahora driver should be inside city", boolDriverMahora)
 }
-/*
-func TestVisitMessage(t *testing.T) {
-	aDriver := driver{driverID: 1}
-	aDriver.visitCount = 0
-	aDriver.exitCity = ""
-
-	expectedMessage := fmt.Sprintf(MessageDriverMetWithJJ, 1, 0) + "\n" + MessagePassengerMissedOut
-	actualMessage := aDriver.visitMessage()
-	AssertEqual(t, "Driver should join the correct messages", actualMessage, expectedMessage)
-}*/
 
 func TestVisitMessageJohn(t *testing.T) {
 	driver0 := driver{driverID: 1}
@@ -89,6 +80,7 @@ func TestVisitMessageExitCity(t *testing.T) {
 }
 
 func TestStart(t *testing.T) {
+	// ITPR6.590A2-DRV004 and ITPR6.590A2-SYS003
 	// Driver should not start outside the city
 	// ID 1 0 - 0.2499,
 	// ID 2 0.2500 - 0.4999
@@ -105,7 +97,7 @@ func TestStart(t *testing.T) {
 	d2 := driver{}
 	d2.start(1, testNetwork)
 	AssertEqual(t, "Driver is forced to location 1, when invalid input: -1", d1.location.id, 1)
-	AssertEqual(t, "Driver is forced to location 1, when invalid input: 1", d2.location.id, 1)
+	AssertEqual(t, "Driver is forced to location 1, when valid input: 1", d2.location.id, 1)
 
 	// Refer to FUN-AKINA-COUNT: The start method checks if you have met John even when starting at a Akina
 	d3 := driver{}
@@ -140,6 +132,9 @@ func TestStart(t *testing.T) {
 }
 
 func TestMove(t *testing.T){/*
+	// ITPR6.590A2-DRV001
+	// can move to the correct node
+
 	// Move location
 	driver := driver{}
 	orginalLocName := "Test"//driver.location.name
@@ -158,10 +153,58 @@ func TestMove(t *testing.T){/*
 	// Can't test*/
 }
 
+/*
+func (d *driver) move(r *rand.Rand) string {
+	from := d.location.name
+	path := d.pickPath(r.Float64())
+	d.location, _ = path.getNeighbour(d.location)
 
-// func TestPickPath(){
+	if d.checkExit(r.Float64()) {
+		d.location = path.exit
+		d.exitCity = path.city
+	}
 
-// }
+	d.tryMeetJohn()
+
+	return fmt.Sprintf(MessageDriverHeading, d.driverID, from, d.location.name)
+}
+*/
+
+
+func TestPickPath(t *testing.T){
+	// Driver should not start outside the city
+	// ID 1 0 - 0.2499,
+	// ID 2 0.2500 - 0.4999
+	// ID 3 0.5000 - 0.7499
+	// ID 4 0.7500 - 0.9999
+	testNetwork := LoadNewNetwork(MapFile)
+
+	// Starting Visit message
+	d4 := driver{}
+	fmt.Println(testNetwork.locations[1].paths[0].node01, "Mylocation")
+	d4.location = testNetwork.locations[1]
+	d4Message := d4.pickPath(0).name
+	expectedMayfair := "Mayfair"
+	AssertEqual(t, "Driver should choose Mayfair", d4Message, expectedMayfair)
+
+	d5 := driver{}
+	d5.location = testNetwork.locations[2]
+	d5Message := d5.pickPath(0.25).name
+	exepctedAkina := "Akina"
+	AssertEqual(t, "Driver should choose Akina", d5Message, exepctedAkina)
+
+	d6 := driver{}
+	d6.location = testNetwork.locations[3]
+	d6Message := d6.pickPath(0.5).name
+	expectedStortfordLodge := "Stortford Lodge"
+	AssertEqual(t, "Driver should choose Stortford Lodge", d6Message, expectedStortfordLodge)
+
+	d7 := driver{}
+	d7.location = testNetwork.locations[4]
+	d7Message := d7.pickPath(0.75).name
+	expectedMahora := "Mahora"
+	AssertEqual(t, "Driver should choose Mahora", d7Message, expectedMahora)
+}
 
 func TestNewDriver(t *testing.T) {
 	d0 := newDriver(0)
@@ -172,6 +215,7 @@ func TestNewDriver(t *testing.T) {
 }
 
 func TestTryMeetJohn(t *testing.T) {
+	// ITPR6.590A2-SYS003
 	dAkina := driver{location: &node{id: AkinaCityID}, visitCount: 0}
 	dNotAkina := driver{location: &node{id: AkinaCityID + 1}, visitCount: 0}
 
