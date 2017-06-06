@@ -1,8 +1,8 @@
 # Test Report: Test Findings
 
 ### Testing Evidence
-Please see below links for testing 
-![Test Results](test results.PNG)
+Please see below links for testing   
+![Test Results](test_results.PNG)
 
 ### Discoveries
 One of our interpreted requirements was to have the drivers have a change to exit of about 20%. This meant that the program would have a chance to showcase some of the features such as "Visiting john" and displaying varying messages. These features initially would not have been very visible as the drivers would have exited about 50% of the time.
