@@ -1,144 +1,90 @@
 # Unit tests
+
+## System
+#### ITPR6.590A2-SYS001
+The random generator can be set by an input  
+	
+  ##### Valid input
+  Execute: call `getRandomGen` method, with an input of `100`  
+  Message: Random gen with seed 100 should be 0.8165026937796166  
+  Assert:  getRandomGen returns `0.8165026937796166`  
+  
+  ##### Input as a string
+  Execute:  call `getRandomGen` method, with an input of `one hundred`  
+  Message:  Random gen with error gen should be 0.9451961492941164  
+  Assert:  getRandomGen returns `0.8165026937796166` because 0 is actually uses.    
+  
+  Message:  Random gen should return an error  
+  Assert:  Error is not null.  
+  
+#### ITPR6.590A2-SYS002
+The system should iterate through 5 drivers  
+  
+#### ITPR6.590A2-SYS003
+The system should print on screen appropriate messages  
+
+  ##### Refer to FUN-AKINA-EDGES
+  Message: Driver should show no vists  
+  Assert: Message says that "That passenger missed out!"  
+  
+  Message: Driver with negative vists should show nothing  
+  Assert: Message is blank  
+  
+  Message: Driver with few visists should show nothing  
+  Assert: Message is blank  
+  
+  Message: Driver with many visits should need help  
+  Assert: Message says that "This driver needed lots of help!"  
+
+  ###### Refer to FUN-AKINA-COUNT
+  Message: Driver shows that it did not meet John  
+  Assert: Visit message is formatted correctly and correct data 0 times  
+  
+  Message: Driver shows that it meet John  
+  Assert: Visit message is formatted correctly and correct data 3 times     
+  
+  Message:  Driver shows that it John less than zero  
+  Assert: Visit message is formatted correctly and correct data -1 times     
+  
+  Message: Driver should display exiting Napier  
+  Assert: Driver has gone to Napier  
+  
+  Message: Driver should display no exit  
+  Assert: No message is displayed when driver is exiting not from napier  
+  
+  ###### Refer to FUN-OTHER-CITIES
+  Execute:  call `driverInCity` method, with a location of `Outside City`    
+  Message:  OutsideCity driver should not be inside city  
+  Assert:   Method returns false  
+
+```  TestStart
+```
+## Driver
+#### ITPR6.590A2-DRV001 
+Drivers can move to another node given an input  
+
+#### ITPR6.590A2-DRV002 
+Drivers will end their driving session only if they’re on an exit  
+
+#### ITPR6.590A2-DRV003 
+Test the DriverInCity method. When a driver has exited the city, their location will be "outside city"
+  Preconditions: Create 5 drivers, and assign all to a different location
+
+  ###### For each location: Example written for `Outside City`
+
+  Execute:  call `driverInCity` method, with a location of `Outside City`  
+  Message:  OutsideCity driver should not be inside city  
+  Assert:   Method returns false  
+
+#### ITPR6.590A2-DRV004
+Drivers can start at a set location
+
 ### LOC - Locations
 __ITPR6.590A2-LOC001__  
 Node map should be loadable
 
-	Execution:  
-	Successfully retrieve JSON map file  
-	Load JSON map file
-
-	Postconditions:  
-	Test that all nodes have been created  
-
 __ITPR6.590A2-LOC002__  
-Node map should be set up with four city locations  
-
-	Preconditions:  
-	Load map JSON file  
-
-	Execution:  
-	Build Locations from file  
-	Retrieve node network  
-
-	Postconditions:  
-	Test that there are four city nodes	  
+Node map should be set up with four city locations    
 
 __ITPR6.590A2-LOC003__  
 Node map should be set up with four exit locations  
-
-	Preconditions:  
-	Load map JSON file  
-
-	Execution:  
-	Build Locations from file  
-	Retrieve node network  
-
-	Postconditions:  
-	Test that there are four exit nodes  
-
-### DRV - Driver  
-
-__ITPR6.590A2-DRV001__  
-Drivers can move to another node given an input  
-
-	Precondition:  
-	Build driver and network  
-  
-	Execution:  
-  #### Test driver moves from "Mayfair to Akina"
-  call `Move` method with a `Sarah to insert this number`
-  
-  
-	 
-	Move driver with float  
-
-	Postconditions:  
-	Check that driver has moved to the right node  
-
-__ITPR6.590A2-DRV002__  
-Drivers will end their driving session only if they’re on an exit  
-
-	Precondition:  
-	Build driver and network  
-
-	Execution:  
-	Set drivers starting path  
-	Move driver to a city location  
-	Move driver to an exit  
-
-	Postconditions:  
-	Check that the driver is still driving on city locations  
-	Check that the driver stops driving at the exit   
-
-__ITPR6.590A2-DRV003__  
-When a driver has exited the city, their location will be "outside city"  
-
-	Precondition:  
-	Build driver and network  
-
-	Execution:    
-	Move driver to an exit  
-
-	Postconditions:  
-	Check the drivers location is "outside city"  
-
-__ITPR6.590A2-DRV004__  
-Drivers can start at a set location  
-
-	Precondition:  
-	Build driver and network  
-	Pick a seeded number  
-
-	Execution:  
-	Set drivers starting location with the seeded number  
-
-	Postconditions:  
-	Check that the driver is at the expected starting location  
-
-### SYS - System  
-
-ITPR6.590A2-SYS001
-The random generator can be set by an input  
-
-	Precondition:  
-	Build system  
-
-	Execution:  
-  #### Correct input
-  Execute: call `getRandomGen` method, with an input of `100`
-  Assert:  getRandomGen returns `0.8165026937796166`
-  
-  #### Input as a string
-  Execute: call `getRandomGen` method, with an input of `one hundred`
-  Assert:  getRandomGen returns `0.8165026937796166` because 0 is actually uses.
-  
-  #### Correct input: input as a 0
-  Execute: call `getRandomGen` method, with an input of `0`
-  Assert:  getRandomGen returns `0.8165026937796166`.
-
-__ITPR6.590A2-SYS002__  
-The system should iterate through 5 drivers  
-
-	Precondition:  
-	Build system  
-
-	Execution:  
-	Set seed  
-	Run system  
-
-	Postconditions:  
-	Check that there have only been 5 drivers  
-
-__ITPR6.590A2-SYS003__  
-The system should print on screen appropriate messages  
-
-	Precondition:  
-	Build system  
-
-	Execution:  
-	Set seed  
-	Run system  
-	Save messages returned by drivers  
-
-	Postconditions:  
-	Check that the messages sent by the drivers are expected  
