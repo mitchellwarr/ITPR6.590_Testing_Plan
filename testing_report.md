@@ -13,7 +13,7 @@ The nature of the testing methodology used meant that the code structure needed 
 
 Along with the message functions, the move function was also split up. This was done so because the move function for the drive takes in the random generator. To make things easier to test, the logic was abstracted away from the generator by putting into a few small functions that would take the result of the generator. This allowed the move function to use the small functions with the generator, but also allowed the tests to have an easier set up and more control over testing the requirements.  
 
-We have performed unit tests. There are no intergration tests. The main method performs tasks but no way to test if they are performed in the correct order. eg. Print "-----" dashes at the end of each driver is not tested. This is because there is no funcation that can quickly check if this has been done. Therefore, if someone removes this "fmt.Println("-----")" line from the code, then no test will alert us of that fact that we do not line up with the specifications. 
+We have performed unit tests. There are no integration tests. The main method performs tasks but no way to test if they are performed in the correct order. eg. Print "-----" dashes at the end of each driver is not tested. This is because there is no function that can quickly check if this has been done. Therefore, if someone removes this "fmt.Println("-----")" line from the code, then no test will alert us of that fact that we do not line up with the specifications. 
 
 ### Observations
 A lot of code has needed to be abstracted or operations exposed, so that more control can be given to testing methods for setting up and verification.  
