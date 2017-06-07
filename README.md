@@ -1,7 +1,34 @@
 # ITPR6.590_Testing_Plan
 
-Work produced by Mitchel Warr and Sarah Anderson for the EIT's Software Testing. 
+Work produced by Mitchel Warr and Sarah Anderson for the EIT's Software Testing.   
 Feb 2017 - June 2017. 
+
+##### Assignment 2
+###### Executive Summary 
+- [x] [Executive Summary](https://github.com/mitchellwarr/ITPR6.590_Testing_Plan/blob/master/Executive_Summary.md)  
+
+###### Activity log 
+- [x] [ToDo list](https://github.com/mitchellwarr/ITPR6.590_Testing_Plan/blob/master/SoftwareTesting.tdl)  
+- [x] [Commit log](https://github.com/mitchellwarr/ITPR6.590_Testing_Plan/commits/master)  
+
+###### Test plan 
+- [x] [Test Plan](https://github.com/mitchellwarr/ITPR6.590_Testing_Plan/blob/master/Test_Plan.md)  
+
+##### Assignment 3
+###### Findings Report:
+- [x] [Findings report](https://github.com/mitchellwarr/ITPR6.590_Testing_Plan/blob/master/testing_report.md)  
+- [x] [Evidence of the tests](https://github.com/mitchellwarr/ITPR6.590_Testing_Plan/blob/master/test_results.PNG)  
+
+###### Test documentation:
+- [x] [Unit](https://github.com/mitchellwarr/ITPR6.590_Testing_Plan/blob/master/unit_tests.md)
+- [x] [Component](https://github.com/mitchellwarr/ITPR6.590_Testing_Plan/blob/master/Component_Test_Plan.md)
+
+###### Actual tests:
+- [x] [main_test.go](https://github.com/mitchellwarr/ITPR6.590_Testing_Plan/blob/master/driverApp/src/main_test.go)  
+- [x] [driver_test.go](https://github.com/mitchellwarr/ITPR6.590_Testing_Plan/blob/master/driverApp/src/driver_test.go)  
+- [x] [network_test.go](https://github.com/mitchellwarr/ITPR6.590_Testing_Plan/blob/master/driverApp/src/network_test.go)  
+
+
 
 ## CitySim2017 Requirements Specification
 
